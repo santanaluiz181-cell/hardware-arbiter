@@ -1,131 +1,122 @@
-# Hardware Arbiter 🎨⚖️
-
-> **Stop choking your CPU with local AI.** Autonomous Hardware Profiler & Dynamic Workload Governor for Developers, Antigravity, and Local AI Runtimes.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-cyan.svg)](https://www.python.org/)
-[![Antigravity Skill](https://img.shields.io/badge/Antigravity-Agent%20Skill-10b981.svg)](SKILL.md)
-[![Hardware Acceleration](https://img.shields.io/badge/Accelerators-DirectML%20%7C%20CUDA%20%7C%20Vulkan-f59e0b.svg)]()
+# Hardware Arbiter 🪮⚖️
 
 <p align="center">
-  <img src="mascot/paint_mascot.svg" alt="Paint the Arbiter Mascot" width="600" />
+  <img src="mascot/hero-banner.svg" alt="Hardware Arbiter Hero Banner — Passando o Pente Fino" width="100%" />
+</p>
+
+> **Passando o Pente Fino no Hardware:** O peso vai com os dentes do pente direto para a GPU; a CPU fica limpa, com os fios assentados e zero travamentos.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-38bdf8.svg)](https://www.python.org/)
+[![Antigravity Skill](https://img.shields.io/badge/Antigravity-Agent%20Skill-10b981.svg)](SKILL.md)
+[![Accelerators](https://img.shields.io/badge/Backends-DirectML%20%7C%20CUDA%20%7C%20Vulkan-f59e0b.svg)]()
+[![GitHub Pages](https://img.shields.io/badge/Showcase-Live%20Demo-0284c7.svg)](https://santanaluiz181-cell.github.io/hardware-arbiter/)
+
+---
+
+## 🪮 Conheça o "Pente Fino" (The Hardware Comb Mascot)
+
+O **Pente Fino** é o mascote oficial do Hardware Arbiter. Inspirado na mesma linha artística e carisma da **Foquinha** (MJ Notch), da **Raposa Kitsune** e do **Elefante Phanty** (Ultimate Research):
+
+- **O Pente passa desembaraçando o fluxo:** 
+  - **As mechas que vão com o pente (GPU):** Os nós pesados de computação (tensores, embeddings do ChromaDB, OCR de visão, Whisper ASR) são puxados pelos dentes do pente e descarregados na GPU (DirectML / CUDA / Vulkan).
+  - **As mechas que ficam na raiz (CPU):** As rotinas leves de sistema (I/O de arquivos, Git, terminal) permanecem assentadas na CPU, protegidas por **Thread Clamping** para o editor e o mouse nunca mais engasgarem.
+
+<p align="center">
+  <img src="mascot/pente_mascot.svg" alt="Mascote Pente Fino" width="380" />
 </p>
 
 ---
 
-## 🎨 Meet "Paint the Arbiter"
+## 🌐 Seleção de Idioma / Language Selector / 语言导航
 
-**Paint** is our retro-modern mascot inspired by classic 90s desktop craft. 
-He holds two paint tools:
-- **Neon Cyan Paint:** Sweeps through your system, identifying heavy tensor tasks (embeddings, OCR, Whisper ASR, UI rasterization) and rolling them directly onto the GPU.
-- **Amber Paint:** Gathers light OS system calls, Git operations, and file I/O into a tight, thread-clamped CPU pipeline so your editor and mouse never freeze.
+- [Português 🇧🇷](#-português)
+- [English 🇺🇸](#-english)
+- [中文 🇨🇳](#-中文)
 
 ---
 
-## 🌐 Language Selector / Idiomas / 语言
+## 🇧🇷 Português
 
-- [English 🇺🇸](#-english)
-- [Português 🇧🇷](#-português)
-- [中文 🇨🇳](#-中文)
+### A Dor Real de Engenharia
+Você coloca uma GPU moderna no computador (como uma AMD RX 6600 ou RTX 3060), mas o seu processador é de 4 núcleos mais antigo (como um Core i7 Haswell de 2014). Quando ferramentas locais de IA ou agentes começam a rodar, bibliotecas como PyTorch ou ONNX tentam instanciar 8 a 16 threads de CPU simultaneamente. 
+
+O resultado: **tempestade de troca de contexto (context-switching storm)**, mouse congelando e editor travado, enquanto a GPU com 8GB de VRAM fica parada com 4% de uso.
+
+### Como o Hardware Arbiter Resolve
+O script executa um micro-benchmark determinístico multi-thread, audita a GPU e calcula o **Índice de Razão de Hardware (HRI)**:
+
+$$HRI = \frac{Score_{GPU}}{Score_{CPU}}$$
+
+| Perfil | Faixa de HRI | Cenário de Hardware | Ação do Pente Fino |
+| :--- | :--- | :--- | :--- |
+| **`GPU_DOMINANT`** | $HRI \ge 2.0$ | CPU fraca/antiga + GPU Dedicada Forte (ex: i7-4790 + RX 6600) | **O pente puxa tudo:** 100% de embeddings vetoriais, visão e transcrição vão para a GPU via DirectML/Vulkan. Na CPU, aplica **Thread Clamping (`OMP=2`, `UV=4`)** e prioridade `BelowNormal` em subprocessos. |
+| **`BALANCED`** | $0.6 < HRI < 2.0$ | Máquina equilibrada (ex: Ryzen 5 5600 + RTX 3060) | Divisão 50/50 simétrica. Matemática na GPU, pipelines de compilação e I/O com threads livres na CPU. |
+| **`CPU_DOMINANT`** | $HRI \le 0.6$ | CPU potente + GPU integrada/básica (ex: i9 / Ryzen 9 + iGPU) | O pente deixa a matemática na CPU via AVX2/AVX-512, poupando a GPU fraca apenas para renderização de tela. |
+
+### Instalação Rápida
+```bash
+# Clonar o repositório
+git clone https://github.com/santanaluiz181-cell/hardware-arbiter.git
+cd hardware-arbiter
+pip install -e .
+
+# Apenas diagnosticar o PC (leitura)
+hardware-arbiter --lang pt
+
+# Aplicar o pente fino e travar as variáveis no sistema
+hardware-arbiter --apply --lang pt
+```
 
 ---
 
 ## 🇺🇸 English
 
 ### The Problem
-Most AI coding agents and local tools spawn unconstrained worker threads (`OMP_NUM_THREADS`, `UV_THREADPOOL_SIZE`). If you're running a modern GPU (like an RTX 3060 or AMD RX 6600) alongside an older 4-core CPU (like an Intel Haswell or budget chip), your CPU gets crushed by context-switching storms while your 8GB of VRAM sits idle at 4% utilization.
+AI tools and coding agents often launch unconstrained worker threads (`OMP_NUM_THREADS`, `UV_THREADPOOL_SIZE`). When paired with an older quad-core CPU and a modern GPU, your CPU gets smothered by context switches while 8GB of high-speed GDDR6 VRAM sits idle.
 
-### The Solution: Hardware Ratio Index (HRI)
-Hardware Arbiter benchmarks your CPU's multi-thread floating-point throughput, audits GPU compute tiers, and computes the **Hardware Ratio Index (HRI)**:
+### The Comb Solution
+The **Dapper Comb (Pente Fino)** sweeps through your hardware:
+- **Tensors, embeddings, OCR, and speech recognition** get caught in the comb teeth and channeled straight to the GPU.
+- **Lightweight OS routines** stay comfortably at the roots on the CPU under strict thread clamping.
 
-$$HRI = \frac{Score_{GPU}}{Score_{CPU}}$$
-
-| Profile | HRI Range | Hardware Scenario | Arbiter Action |
-| :--- | :--- | :--- | :--- |
-| **`GPU_DOMINANT`** | $HRI \ge 2.0$ | Weak CPU + Dedicated GPU (e.g. i7-4790 + RX 6600) | 100% vector embeddings, vision, and ASR offloaded to GPU (DirectML/CUDA/Vulkan). **Thread Clamping (`OMP=2`, `UV=4`)** enforced on CPU. Subprocesses set to `BelowNormal` priority. |
-| **`BALANCED`** | $0.6 < HRI < 2.0$ | Balanced Rig (e.g. Ryzen 5 5600 + RTX 3060) | 50/50 hybrid split. Math on GPU, build/I/O unconstrained on CPU. |
-| **`CPU_DOMINANT`** | $HRI \le 0.6$ | Strong CPU + Integrated Graphics (e.g. i9 / Ryzen 9 + iGPU) | Math routed to CPU AVX2/AVX-512 (OpenVINO/XNNPACK). Preserves weak GPU exclusively for display. |
-
-### Quick Start
+### CLI Usage
 ```bash
-# Clone and install locally
-git clone https://github.com/santanaluiz181-cell/hardware-arbiter.git
-cd hardware-arbiter
-pip install -e .
-
-# Audit only (read-only diagnostics)
+# Run trilingual diagnostic
 hardware-arbiter --lang en
 
-# Enforce thread clamps and environment variables
+# Enforce thread clamps & policies
 hardware-arbiter --apply --lang en
-```
-
----
-
-## 🇧🇷 Português
-
-### O Problema
-A maioria das ferramentas locais de IA e agentes de código tenta usar todos os threads da CPU sem critério. Se você tem uma GPU moderna (como uma RX 6600 ou RTX 3060) com um processador de 4 núcleos mais antigo, a CPU atinge 100% de uso com trocas de contexto (*context switching*), travando o mouse e o editor, enquanto a GPU fica ociosa.
-
-### Como o Hardware Arbiter Resolve
-O script executa um micro-benchmark determinístico multi-thread na CPU, audita os provedores da GPU (DirectML, Vulkan, CUDA) e calcula o **Índice de Razão de Hardware (HRI)**.
-
-- Se a GPU for muito superior à CPU (**`GPU_DOMINANT`**, como no nosso teste onde o HRI foi de **17.0x**):
-  1. Força embeddings locais (ChromaDB / ONNX) e visão para DirectML/Vulkan na GPU (ganho de **13.8x** em velocidade: de 1666ms na CPU para 120ms na RX 6600).
-  2. Aplica **Thread Clamping** (`OMP_NUM_THREADS=2`, `UV_THREADPOOL_SIZE=4`, `RAYON_NUM_THREADS=2`) para impedir que bibliotecas sobrecarreguem os núcleos da CPU.
-  3. Reduz a ocupação média da CPU em até **46%**.
-
-### Instalação e Uso
-```bash
-# Executar diagnóstico
-python -m hardware_arbiter.cli --lang pt
-
-# Aplicar limites e proteger o sistema automaticamente
-python -m hardware_arbiter.cli --apply --lang pt
-
-# Usar como Skill no Antigravity:
-# Copie a pasta para ~/.gemini/config/skills/hardware-arbiter/
 ```
 
 ---
 
 ## 🇨🇳 中文
 
-### 核心痛点
-许多本地开发工具与本地 AI 代理默认尝试榨干 CPU 的所有并发线程。如果你的系统拥有一张现代独立显卡（如 AMD RX 6600 或 NVIDIA RTX 3060），但搭配的是较老的四核 CPU，CPU 会因海量的线程上下文切换而卡死（鼠标掉帧、IDE 冻结），而显卡却在以 4% 的极低负载待机。
+### 硬件细齿梳哲学
+将系统负载如秀发般精准梳理：
+- **重度张量计算**（向量嵌入、OCR视觉、Whisper语音转写）顺着梳齿彻底梳入独立 GPU（DirectML / CUDA / Vulkan）。
+- **底层轻量例程**（文件I/O、终端、Git）如同健康发根安稳留驻在 CPU 端，辅以严格的线程钳制 (`OMP=2`, `UV=4`) 杜绝界面冻结。
 
-### 硬件算力比例系数 (HRI)
-Hardware Arbiter 通过多线程浮点基准测试评估 CPU，审计 GPU 显存与运行后端（DirectML/CUDA/Vulkan），并计算 **HRI 系数**：
-
-$$HRI = \frac{Score_{GPU}}{Score_{CPU}}$$
-
-- **`GPU_DOMINANT` (HRI $\ge$ 2.0):** 彻底卸载向量嵌入、OCR 与语音模型至 GPU。强制对 CPU 执行线程钳制 (`OMP=2`, `UV=4`)，子进程设为低优先级，彻底恢复系统流畅度。
-- **`BALANCED` (0.6 < HRI < 2.0):** 算力均衡，实施 50/50 混合协同调度。
-- **`CPU_DOMINANT` (HRI $\le$ 0.6):** CPU 算力超群但缺乏独显，优先调用 AVX2/AVX-512 指令集，避免弱显存溢出。
-
-### 命令行运行
+### 运行方式
 ```bash
-# 仅运行诊断输出
-python -m hardware_arbiter.cli --lang zh
+# 诊断当前机器算力比例
+hardware-arbiter --lang zh
 
-# 自动写入系统环境优化配置
-python -m hardware_arbiter.cli --apply --lang zh
+# 自动将优化配置写入系统环境
+hardware-arbiter --apply --lang zh
 ```
 
 ---
 
-## 📊 Live Interactive Showcase
+## 📊 Live Interactive Showcase (GitHub Pages)
 
-We included a standalone, anti-AI slop frontend showcase located in [`docs/index.html`](docs/index.html) with a live HRI simulator, interactive trilingual toggle, and retro MS Paint aesthetic.
-
-To preview locally:
-```bash
-# Open in your browser
-python -m http.server --directory docs 8080
-# Visit http://localhost:8080
-```
+Acesse a demonstração interativa completa em [santanaluiz181-cell.github.io/hardware-arbiter](https://santanaluiz181-cell.github.io/hardware-arbiter/):
+- Simulador interativo de HRI com seletor de CPU e GPU.
+- Arte vetorial interativa do mascote Pente Fino.
+- Design técnico 100% livre de clichês visuais de IA.
 
 ---
 
-## 📜 License
-MIT License • Created with craft by **Santana Luiz** (`santanaluiz181-cell`).
+## 📜 Licença
+Distribuído sob licença MIT • Autor: **Santana Luiz** (`santanaluiz181-cell`).

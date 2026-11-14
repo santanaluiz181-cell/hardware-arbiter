@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hardware Arbiter — Stop Choking Your CPU</title>
+  <title>Hardware Arbiter — Passando o Pente Fino no Hardware</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090a0f;
-      --card-bg: #12141c;
-      --border: #222634;
-      --border-focus: #3b4259;
-      --text-main: #f1f5f9;
+      --bg: #0b0f19;
+      --card-bg: #111726;
+      --border: #1e293b;
+      --border-focus: #38bdf8;
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --cyan: #06b6d4;
-      --cyan-dim: rgba(6, 182, 212, 0.12);
+      --cyan: #38bdf8;
+      --cyan-dim: rgba(56, 189, 248, 0.12);
       --amber: #f59e0b;
       --amber-dim: rgba(245, 158, 11, 0.12);
       --green: #10b981;
@@ -32,7 +32,7 @@
       font-family: var(--font-sans);
       line-height: 1.6;
       padding: 0 1.5rem 4rem;
-      max-width: 1040px;
+      max-width: 1060px;
       margin: 0 auto;
       -webkit-font-smoothing: antialiased;
     }
@@ -42,9 +42,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2rem 0 1.5rem;
+      padding: 1.75rem 0 1.25rem;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
     .brand {
       display: flex;
@@ -61,7 +61,7 @@
       border-radius: 4px;
       background: var(--cyan-dim);
       color: var(--cyan);
-      border: 1px solid rgba(6, 182, 212, 0.3);
+      border: 1px solid rgba(56, 189, 248, 0.3);
     }
     .lang-switcher {
       display: flex;
@@ -82,34 +82,74 @@
       transition: all 0.15s ease;
     }
     .lang-btn.active {
-      background: var(--border-focus);
+      background: #1e293b;
       color: #fff;
     }
 
-    /* Hero Section */
-    .hero {
+    /* Hero Banner Image */
+    .hero-banner-container {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 20px 40px -15px rgba(2, 6, 23, 0.8);
+      border: 1px solid var(--border);
+    }
+    .hero-banner-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Concept & Mascot Section */
+    .concept-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 2.5rem;
       align-items: center;
       margin-bottom: 4rem;
     }
-    @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; }
+    @media (max-width: 800px) {
+      .concept-grid { grid-template-columns: 1fr; }
     }
     h1 {
-      font-size: 2.75rem;
-      font-weight: 700;
+      font-size: 2.5rem;
+      font-weight: 800;
       letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 1rem;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
       color: #fff;
     }
-    .hero-lead {
-      font-size: 1.15rem;
+    .lead-text {
+      font-size: 1.1rem;
       color: var(--text-muted);
       margin-bottom: 2rem;
+      line-height: 1.7;
     }
+    .mascot-portrait {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .mascot-portrait img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+    .mascot-quote {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    /* Quick Install Row */
     .cta-row {
       display: flex;
       gap: 1rem;
@@ -122,15 +162,14 @@
       gap: 0.5rem;
       background: #f8fafc;
       color: #0f172a;
-      font-weight: 600;
+      font-weight: 700;
       padding: 0.75rem 1.25rem;
       border-radius: 6px;
       text-decoration: none;
       font-size: 0.95rem;
-      transition: transform 0.1s ease, background 0.15s ease;
+      transition: transform 0.1s ease;
     }
     .btn-primary:hover {
-      background: #e2e8f0;
       transform: translateY(-1px);
     }
     .install-box {
@@ -141,50 +180,23 @@
       font-family: var(--font-mono);
       font-size: 0.88rem;
       color: #38bdf8;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
     }
 
-    /* Mascot Display Card */
-    .mascot-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .mascot-frame {
-      width: 100%;
-      height: 240px;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 1rem;
-      border: 1px solid var(--border);
-    }
-    .mascot-caption {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* Interactive Calculator Section */
+    /* Interactive Simulator */
     .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-size: 1.85rem;
+      font-weight: 800;
       letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
     }
     .section-sub {
       color: var(--text-muted);
       margin-bottom: 2rem;
-      font-size: 1rem;
     }
-
     .interactive-panel {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 2rem;
       margin-bottom: 3.5rem;
     }
@@ -212,7 +224,7 @@
       padding: 0.75rem 1rem;
       border-radius: 6px;
       font-family: var(--font-mono);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       outline: none;
       cursor: pointer;
     }
@@ -220,11 +232,10 @@
       border-color: var(--cyan);
     }
 
-    /* Live HRI Result Card */
     .result-box {
       background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 1.5rem;
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -244,15 +255,15 @@
     }
     .hri-number {
       font-family: var(--font-mono);
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: 3.25rem;
+      font-weight: 800;
       color: var(--cyan);
       line-height: 1;
     }
     .hri-tag {
       font-family: var(--font-mono);
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       margin-top: 0.5rem;
     }
@@ -260,19 +271,16 @@
       font-size: 0.95rem;
       color: var(--text-muted);
     }
-    .action-summary strong {
-      color: var(--text-main);
-    }
 
-    /* Terminal Preview Box */
+    /* Terminal Output */
     .terminal {
-      background: #050608;
+      background: #050811;
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 1.25rem;
       font-family: var(--font-mono);
       font-size: 0.85rem;
-      line-height: 1.5;
+      line-height: 1.55;
       overflow-x: auto;
       margin-bottom: 3.5rem;
     }
@@ -281,13 +289,9 @@
       gap: 0.5rem;
       margin-bottom: 1rem;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid #1a1e2a;
+      border-bottom: 1px solid #1a2233;
     }
-    .term-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
+    .term-dot { width: 10px; height: 10px; border-radius: 50%; }
     .term-dot.r { background: var(--red); }
     .term-dot.y { background: var(--amber); }
     .term-dot.g { background: var(--green); }
@@ -307,71 +311,74 @@
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Top Bar -->
   <header>
     <div class="brand">
       <span>hardware-arbiter</span>
-      <span class="brand-badge">v0.1.0</span>
+      <span class="brand-badge">pente-fino v0.1.0</span>
     </div>
     <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('zh')">ZH</button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
+  <!-- Hero Banner SVG (960x300 Official) -->
+  <div class="hero-banner-container">
+    <img src="../mascot/hero-banner.svg" alt="Hardware Arbiter Hero Banner">
+  </div>
+
+  <!-- Concept & Mascot -->
+  <section class="concept-grid">
     <div>
-      <h1 id="hero-title">Stop Choking Your CPU with AI Tasks.</h1>
-      <p class="hero-lead" id="hero-lead">
-        A 2014 quad-core CPU cannot run 16 Python threads, an Electron editor, and vector embeddings without freezing your mouse. Hardware Arbiter automatically benchmarks your rig, calculates the Hardware Ratio Index (HRI), and offloads heavy math to your GPU while clamping CPU thread thrashing.
+      <h1 id="hero-title">Passando o Pente Fino no Hardware.</h1>
+      <p class="lead-text" id="hero-lead">
+        O <strong>Pente Fino</strong> passa pelo seu computador: as cargas pesadas de tensores (embeddings, visão, Whisper e ML) <strong>vão com os dentes do pente direto para a GPU</strong>. As rotinas leves de sistema (I/O, Git, terminal) <strong>ficam assentadas na raiz com a CPU</strong>, protegidas por limites estritos de threads (<em>Thread Clamping</em>) para seu mouse e editor nunca mais travarem.
       </p>
       <div class="cta-row">
         <a href="https://github.com/santanaluiz181-cell/hardware-arbiter" class="btn-primary" id="btn-gh">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub Repository
+          Ver no GitHub
         </a>
         <div class="install-box">
-          <span>pip install hardware-arbiter</span>
+          <span>pip install -e . &amp;&amp; hardware-arbiter --apply</span>
         </div>
       </div>
     </div>
 
-    <!-- Mascot Card -->
-    <div class="mascot-card">
-      <div class="mascot-frame">
-        <img src="../mascot/paint_mascot.svg" alt="Paint the Arbiter Mascot" style="width: 100%; height: 100%; object-fit: contain;">
-      </div>
-      <div class="mascot-caption" id="mascot-desc">
-        Meet <strong>Paint the Arbiter</strong>: Sweeps cyan paint over GPU tasks and preserves amber paint for lightweight CPU duties.
+    <!-- Mascot Portrait -->
+    <div class="mascot-portrait">
+      <img src="../mascot/pente_mascot.svg" alt="Pente Fino the Comb Mascot">
+      <div class="mascot-quote" id="mascot-quote">
+        "O peso vai com o pente (GPU); o essencial fica na raiz (CPU)."
       </div>
     </div>
   </section>
 
   <!-- Interactive HRI Simulator -->
   <section>
-    <h2 class="section-title" id="sim-title">Live Hardware Ratio Simulator</h2>
-    <p class="section-sub" id="sim-sub">Pick your hardware profile and see how the governor adapts your workload.</p>
+    <h2 class="section-title" id="sim-title">Simulador de Pente Fino (HRI)</h2>
+    <p class="section-sub" id="sim-sub">Escolha a combinação de hardware e veja como o Pente separa os fios de trabalho.</p>
 
     <div class="interactive-panel">
       <div class="selector-grid">
         <div>
-          <label class="control-label" id="lbl-cpu">CPU Microarchitecture</label>
+          <label class="control-label" id="lbl-cpu">Processador (CPU)</label>
           <select id="cpu-select" onchange="updateSim()">
-            <option value="5.0">Intel Core i7-4790 (2014, 4C/8T) — Weak</option>
-            <option value="25.0">AMD Ryzen 5 3600 (2019, 6C/12T) — Mid</option>
-            <option value="65.0">AMD Ryzen 7 7800X3D (2023, 8C/16T) — Modern High-End</option>
-            <option value="95.0">Intel Core i9-14900K (2024, 24C/32T) — Workstation Monster</option>
+            <option value="5.0" selected>Intel Core i7-4790 (Haswell 2014, 4C/8T) — Gargalo Severo</option>
+            <option value="25.0">AMD Ryzen 5 3600 (2019, 6C/12T) — Médio</option>
+            <option value="65.0">AMD Ryzen 7 7800X3D (2023, 8C/16T) — Moderno Rápido</option>
+            <option value="95.0">Intel Core i9-14900K (2024, 24C/32T) — Monstro de CPU</option>
           </select>
         </div>
 
         <div>
-          <label class="control-label" id="lbl-gpu">GPU Architecture &amp; VRAM</label>
+          <label class="control-label" id="lbl-gpu">Placa de Vídeo (GPU)</label>
           <select id="gpu-select" onchange="updateSim()">
-            <option value="85.0" selected>AMD Radeon RX 6600 (8GB DirectML/Vulkan) — Mid</option>
-            <option value="15.0">Intel UHD / Integrated Graphics — Basic</option>
-            <option value="60.0">NVIDIA GTX 1660 Super (6GB CUDA) — Entry</option>
+            <option value="85.0" selected>AMD Radeon RX 6600 (8GB DirectML/Vulkan) — Forte</option>
+            <option value="15.0">Intel UHD Graphics / Integrada — Básica</option>
+            <option value="60.0">NVIDIA GTX 1660 Super (6GB CUDA) — Entrada</option>
             <option value="100.0">NVIDIA RTX 4080 / 4090 (16-24GB Tensor) — Flagship</option>
           </select>
         </div>
@@ -384,90 +391,93 @@
           <div class="hri-tag" id="profile-tag" style="color: var(--cyan);">GPU_DOMINANT</div>
         </div>
         <div class="action-summary" id="policy-desc">
-          <strong>Governor Strategy:</strong> Offload 100% of embeddings, vision, and ASR to the GPU via DirectML/Vulkan. Apply thread clamps (<code>OMP=2</code>, <code>UV=4</code>) on CPU to prevent mouse and editor UI stuttering.
+          <strong>Ação do Pente Fino:</strong> O pente arrasta 100% de embeddings vetoriais, visão e transcrição para a GPU via DirectML/Vulkan. Na CPU, aplica travas de threads (<code>OMP=2</code>, <code>UV=4</code>) para acabar com a tempestade de context-switching.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Terminal Output Preview -->
+  <!-- Terminal Preview -->
   <section>
-    <h2 class="section-title" id="cli-title">Autonomous Terminal Output</h2>
-    <p class="section-sub" id="cli-sub">Run anywhere. No cloud dependencies. Standalone binary or skill.</p>
+    <h2 class="section-title" id="cli-title">Saída de Terminal com Arte do Pente Fino</h2>
+    <p class="section-sub" id="cli-sub">Portável para qualquer máquina Windows, Linux ou macOS.</p>
 
     <div class="terminal">
       <div class="terminal-header">
         <div class="term-dot r"></div>
         <div class="term-dot y"></div>
         <div class="term-dot g"></div>
-        <span style="color: #64748b; font-size: 0.75rem; margin-left: auto;">bash / powershell</span>
+        <span style="color: #64748b; font-size: 0.75rem; margin-left: auto;">powershell / bash</span>
       </div>
-      <pre style="color: #cbd5e1;"><span style="color: #38bdf8;">$ hardware-arbiter --apply --lang en</span>
+      <pre style="color: #cbd5e1;"><span style="color: #38bdf8;">$ hardware-arbiter --apply --lang pt</span>
 
-   ____  ___    _____   _________       .-._______________________.-.
-  / __ \/   |  /  _/ | / /_  __/       | PAINT THE ARBITER          |
- / /_/ / /| |  / //  |/ / / /          | GPU: DirectML / Vulkan    |
-/ ____/ ___ |_/ // /|  / / /      &lt;O&gt;  | CPU: Thread-Clamped       |
-/_/   /_/  |_/___/_/ |_/ /_/       /|\  '-'-----------------------'-'
-                                   / \   [HRI: 17.0x | GPU_DOMINANT]
-:: Dynamic Workload Balancer &amp; Bottleneck Governor ::
+          __             __
+     .---'  '-----------'  '---.        .-._____________________________.-.
+    /                           \       | PENTE FINO :: HARDWARE COMB   |
+   (   (o)                 (O)-o )      | GPU: Leva o peso com o pente  |
+    \           &lt;w&gt;             /       | CPU: Raiz assentada e limpa   |
+     '===|===|===|===|===|===|='        '-'----------------------------'-'
+         |   |   |   |   |   |   [HRI: 17.0x | GPU_DOMINANT]
+         |   |   |   |   |   |
+         |   |   |   |   |   |   <span style="color: #38bdf8;">~~~~~ GPU OFFLOAD (DirectML/Vulkan) ~~~~~&gt;</span>
+        ( ) ( ) ( ) ( ) ( ) ( )  <span style="color: #f59e0b;">..... CPU ROOT (Thread-Clamped) .....</span>
 
 ======================================================================
-  CPU Detected: Intel Core i7-4790 (4C / 8T) | Score: 5.0/100
-  GPU Detected: AMD Radeon RX 6600 (8GB VRAM) | Score: 85.0/100
+  CPU Detectada: Intel Core i7-4790 (4C / 8T) | Score: 5.0/100
+  GPU Detectada: AMD Radeon RX 6600 (VRAM: 8.0 GB) | Score: 85.0/100
 ======================================================================
-  &gt;&gt; Hardware Ratio Index (HRI): 17.0x [GPU_DOMINANT]
-  &gt;&gt; Policies: DirectML Tensors, Vulkan Audio, OMP_NUM_THREADS=2 (CLAMPED)
+  &gt;&gt; Índice de Razão de Hardware (HRI): 17.0x [GPU_DOMINANT]
+  &gt;&gt; Alocações: Embeddings DirectML, ASR Vulkan, OMP_NUM_THREADS=2
 ======================================================================
-<span style="color: #4ade80;">[OK] Governor policies injected into system environment.</span>
-<span style="color: #4ade80;">[OK] Thread clamp active: 0 context-switching storms on Haswell cores.</span></pre>
+<span style="color: #34d399;">[OK] Políticas do governador aplicadas no ambiente do usuário.</span>
+<span style="color: #34d399;">[OK] Trava de threads ativa: 0 travamentos do mouse na CPU Haswell.</span></pre>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div>Hardware Arbiter • MIT License • Built for Antigravity &amp; Developers Everywhere</div>
-    <div>Author: santanaluiz181-cell</div>
+    <div>Hardware Arbiter (Pente Fino) • MIT License • santanaluiz181-cell</div>
+    <div>Inspirado no padrão estético da Foquinha, Raposa Kitsune e Elefante Phanty</div>
   </footer>
 
   <script>
     const i18n = {
-      en: {
-        heroTitle: "Stop Choking Your CPU with AI Tasks.",
-        heroLead: "A 2014 quad-core CPU cannot run 16 Python threads, an Electron editor, and vector embeddings without freezing your mouse. Hardware Arbiter automatically benchmarks your rig, calculates the Hardware Ratio Index (HRI), and offloads heavy math to your GPU while clamping CPU thread thrashing.",
-        mascotDesc: "Meet <strong>Paint the Arbiter</strong>: Sweeps cyan paint over GPU tasks and preserves amber paint for lightweight CPU duties.",
-        simTitle: "Live Hardware Ratio Simulator",
-        simSub: "Pick your hardware profile and see how the governor adapts your workload.",
-        lblCpu: "CPU Microarchitecture",
-        lblGpu: "GPU Architecture & VRAM",
-        cliTitle: "Autonomous Terminal Output",
-        cliSub: "Run anywhere. No cloud dependencies. Standalone binary or skill."
-      },
       pt: {
-        heroTitle: "Pare de Sufocar sua CPU com Tarefas de IA.",
-        heroLead: "Uma CPU quad-core de 2014 não consegue rodar 16 threads de Python, o editor Electron e embeddings vetoriais sem travar seu mouse. O Hardware Arbiter faz o benchmark da sua máquina, calcula o Índice de Razão de Hardware (HRI) e joga a matemática pesada na GPU enquanto limita os threads da CPU para evitar travamentos.",
-        mascotDesc: "Conheça o <strong>Paint the Arbiter</strong>: Passa a tinta ciano limpando as tarefas na GPU e guarda a tinta âmbar para o trabalho leve da CPU.",
-        simTitle: "Simulador de Proporção de Hardware ao Vivo",
-        simSub: "Escolha o seu hardware e veja como o governador adapta a distribuição de carga.",
-        lblCpu: "Microarquitetura da CPU",
-        lblGpu: "Arquitetura da GPU & VRAM",
-        cliTitle: "Saída de Terminal Autônoma",
-        cliSub: "Execute em qualquer lugar. Zero dependências na nuvem. CLI ou Skill independente."
+        heroTitle: "Passando o Pente Fino no Hardware.",
+        heroLead: "O <strong>Pente Fino</strong> passa pelo seu computador: as cargas pesadas de tensores (embeddings, visão, Whisper e ML) <strong>vão com os dentes do pente direto para a GPU</strong>. As rotinas leves de sistema (I/O, Git, terminal) <strong>ficam assentadas na raiz com a CPU</strong>, protegidas por limites estritos de threads (<em>Thread Clamping</em>) para seu mouse e editor nunca mais travarem.",
+        mascotQuote: "\"O peso vai com o pente (GPU); o essencial fica na raiz (CPU).\"",
+        simTitle: "Simulador de Pente Fino (HRI)",
+        simSub: "Escolha a combinação de hardware e veja como o Pente separa os fios de trabalho.",
+        lblCpu: "Processador (CPU)",
+        lblGpu: "Placa de Vídeo (GPU)",
+        cliTitle: "Saída de Terminal com Arte do Pente Fino",
+        cliSub: "Portável para qualquer máquina Windows, Linux ou macOS."
+      },
+      en: {
+        heroTitle: "Combing Heavy AI Tasks Straight into the GPU.",
+        heroLead: "The <strong>Dapper Comb (Pente Fino)</strong> passes through your machine: heavy tensor knots (embeddings, vision, Whisper, local ML) <strong>get carried away by the comb teeth into the GPU</strong>. The lightweight system roots (I/O, Git, terminals) <strong>stay calm on the CPU</strong>, guarded by strict thread-clamping so your cursor and editor never freeze.",
+        mascotQuote: "\"Heavy knots go with the comb (GPU); the roots rest calm (CPU).\"",
+        simTitle: "Hardware Ratio Index (HRI) Comb Simulator",
+        simSub: "Pick your hardware specs and see how the Comb untangles the workload.",
+        lblCpu: "Processor (CPU)",
+        lblGpu: "Graphics Card (GPU)",
+        cliTitle: "Terminal Output with Comb ASCII Art",
+        cliSub: "Portable to any Windows, Linux, or macOS workstation."
       },
       zh: {
-        heroTitle: "停止用本地AI任务扼杀你的老旧CPU。",
-        heroLead: "一颗2014年的四核CPU无法在同时运行16个Python线程、Electron编辑器和向量检索时保持流畅。Hardware Arbiter 自动对系统进行基准测试，计算硬件算力比例系数 (HRI)，将繁重张量卸载到GPU，同时钳制CPU线程风暴以防止界面冻结。",
-        mascotDesc: "认识 <strong>Paint 硬件裁决者</strong>：用青色涂料清扫GPU任务，用琥珀色画笔保留轻量级CPU系统例程。",
-        simTitle: "实时硬件比例模拟器",
-        simSub: "选择您的硬件配置，查看调度器如何动态优化负载分配。",
-        lblCpu: "CPU 微架构",
-        lblGpu: "GPU 架构与显存",
-        cliTitle: "终端自动化诊断输出",
-        cliSub: "随处运行。零云端依赖。支持独立CLI与Agent Skill。"
+        heroTitle: "硬件精准梳理：重度算力随梳入GPU，底层轻量留驻CPU。",
+        heroLead: "<strong>Pente Fino（硬件细齿梳）</strong>掠过系统：繁重的张量计算（向量嵌入、OCR、Whisper语音、本地ML）<strong>顺着梳齿被彻底梳入GPU</strong>；底层的系统例程（文件I/O、Git、终端）<strong>如同发根安稳留驻在CPU</strong>，通过严格的线程钳制避免CPU过载与鼠标卡顿。",
+        mascotQuote: "“重度张量随梳入显卡，系统发根安稳驻核心。”",
+        simTitle: "精准梳理比例模拟器 (HRI)",
+        simSub: "选择您的硬件配置，查看硬件梳如何拆解并分配计算管线。",
+        lblCpu: "中央处理器 (CPU)",
+        lblGpu: "独立显卡 (GPU)",
+        cliTitle: "终端ASCII艺术输出预览",
+        cliSub: "适用于任何 Windows、Linux 或 macOS 系统。"
       }
     };
 
-    let currentLang = 'en';
+    let currentLang = 'pt';
 
     function setLang(lang) {
       currentLang = lang;
@@ -475,9 +485,9 @@
       event.target.classList.add('active');
 
       const d = i18n[lang];
-      document.getElementById('hero-title').innerText = d.heroTitle;
-      document.getElementById('hero-lead').innerText = d.heroLead;
-      document.getElementById('mascot-desc').innerHTML = d.mascotDesc;
+      document.getElementById('hero-title').innerHTML = d.heroTitle;
+      document.getElementById('hero-lead').innerHTML = d.heroLead;
+      document.getElementById('mascot-quote').innerHTML = d.mascotQuote;
       document.getElementById('sim-title').innerText = d.simTitle;
       document.getElementById('sim-sub').innerText = d.simSub;
       document.getElementById('lbl-cpu').innerText = d.lblCpu;
@@ -500,31 +510,31 @@
         tag.innerText = 'GPU_DOMINANT';
         tag.style.color = 'var(--cyan)';
         if (currentLang === 'pt') {
-          desc.innerHTML = `<strong>Estratégia do Governador:</strong> Descarrega 100% de embeddings, visão e transcrição para a GPU via DirectML/Vulkan. Aplica limites estritos de threads (<code>OMP=2</code>, <code>UV=4</code>) na CPU para evitar que o mouse e a interface travem.`;
+          desc.innerHTML = `<strong>Ação do Pente Fino:</strong> CPU antiga ou fraca. O pente puxa 100% dos nós pesados (embeddings, OCR, visão, ASR) para a GPU. Aplica trava de threads (<code>OMP=2</code>, <code>UV=4</code>) para salvar a CPU.`;
         } else if (currentLang === 'zh') {
-          desc.innerHTML = `<strong>调度策略：</strong> 100% 向量计算、OCR视觉与语音识别卸载至 GPU (DirectML/Vulkan)。在 CPU 端启用线程钳制 (<code>OMP=2</code>, <code>UV=4</code>) 彻底消除界面卡顿。`;
+          desc.innerHTML = `<strong>细齿梳动作：</strong> CPU 偏弱。细齿梳将 100% 的张量计算（嵌入、OCR、Whisper）全部梳入 GPU，同时对 CPU 执行线程钳制 (<code>OMP=2</code>, <code>UV=4</code>)。`;
         } else {
-          desc.innerHTML = `<strong>Governor Strategy:</strong> Offload 100% of embeddings, vision, and ASR to the GPU via DirectML/Vulkan. Apply thread clamps (<code>OMP=2</code>, <code>UV=4</code>) on CPU to prevent mouse and editor UI stuttering.`;
+          desc.innerHTML = `<strong>Comb Action:</strong> Weak CPU. The comb sweeps 100% of tensor knots (embeddings, OCR, vision, ASR) into the GPU. Enforces thread clamps (<code>OMP=2</code>, <code>UV=4</code>) on CPU.`;
         }
       } else if (hri <= 0.6) {
         tag.innerText = 'CPU_DOMINANT';
         tag.style.color = 'var(--amber)';
         if (currentLang === 'pt') {
-          desc.innerHTML = `<strong>Estratégia do Governador:</strong> A CPU é forte. Prioriza instruções vetoriais AVX2/AVX-512 na CPU para inferências locais, poupando a GPU fraca apenas para exibição da tela.`;
+          desc.innerHTML = `<strong>Ação do Pente Fino:</strong> CPU potente e GPU integrada/fraca. O pente mantém a matemática no processador via AVX2/AVX-512, poupando a GPU para exibição de tela.`;
         } else if (currentLang === 'zh') {
-          desc.innerHTML = `<strong>调度策略：</strong> CPU性能优势明显。优先在 CPU 端调用 AVX2/AVX-512 指令集处理向量，保护弱显存 GPU 仅用于屏幕渲染。`;
+          desc.innerHTML = `<strong>细齿梳动作：</strong> CPU 算力占优。细齿梳将计算保留在 CPU 端（通过 AVX2/AVX-512 处理），节省显存供屏幕渲染。`;
         } else {
-          desc.innerHTML = `<strong>Governor Strategy:</strong> CPU is significantly stronger. Prioritize AVX2/AVX-512 on CPU for local inference, reserving weak GPU exclusively for screen display.`;
+          desc.innerHTML = `<strong>Comb Action:</strong> Strong CPU with basic GPU. The comb retains math on CPU AVX2/AVX-512, preserving the weak GPU for display output.`;
         }
       } else {
         tag.innerText = 'BALANCED';
         tag.style.color = 'var(--green)';
         if (currentLang === 'pt') {
-          desc.innerHTML = `<strong>Estratégia do Governador:</strong> Sistema equilibrado. Distribuição de carga simétrica 50/50. Tarefas de tensores na GPU, I/O e pipelines na CPU com threads livres.`;
+          desc.innerHTML = `<strong>Ação do Pente Fino:</strong> Rig equilibrado. Carga dividida meio a meio harmoniosamente.`;
         } else if (currentLang === 'zh') {
-          desc.innerHTML = `<strong>调度策略：</strong> 系统算力均衡。执行 50/50 对称混合调度：张量计算走 GPU，文件与编译流水线走多线程 CPU。`;
+          desc.innerHTML = `<strong>细齿梳动作：</strong> 算力均衡。50/50 对称混合分配。`;
         } else {
-          desc.innerHTML = `<strong>Governor Strategy:</strong> Balanced system. Symmetric 50/50 workload split. Tensor tasks routed to GPU, I/O and build pipelines running with unconstrained CPU threads.`;
+          desc.innerHTML = `<strong>Comb Action:</strong> Balanced system. Symmetrical 50/50 workload division.`;
         }
       }
     }

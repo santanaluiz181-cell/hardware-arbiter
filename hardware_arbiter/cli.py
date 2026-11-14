@@ -9,7 +9,7 @@ import argparse
 
 from .governor import evaluate_and_govern
 from .i18n import t
-from mascot.paint_mascot_ascii import get_mascot_banner
+from mascot.pente_mascot_ascii import get_mascot_banner
 
 def main():
     parser = argparse.ArgumentParser(
@@ -28,7 +28,7 @@ def main():
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
 
-    # Print ASCII mascot banner
+    # Print ASCII Pente Fino mascot banner
     banner = get_mascot_banner(profile=result["profile"], hri=result["hri"], lang=args.lang)
     print(banner)
 
