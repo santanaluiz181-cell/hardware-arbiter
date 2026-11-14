@@ -1,0 +1,98 @@
+"""
+i18n.py — Trilingual Translation Matrix (English, Português, 中文)
+Human-authored, anti-slop technical vocabulary for hardware diagnostics.
+"""
+
+TRANSLATIONS = {
+    "en": {
+        "title": "Hardware Arbiter",
+        "tagline": "Stop choking your CPU. Balance local AI and dev workloads between CPU and GPU.",
+        "profiling_cpu": "Profiling CPU cores, micro-architecture and floating-point throughput...",
+        "profiling_gpu": "Auditing GPU compute units, VRAM and runtime execution providers (DirectML/CUDA/Vulkan)...",
+        "cpu_detected": "CPU Detected",
+        "gpu_detected": "GPU Detected",
+        "vram": "VRAM",
+        "cores": "Cores / Threads",
+        "cpu_score": "CPU Benchmark Score",
+        "gpu_score": "GPU Compute Tier Score",
+        "hri_label": "Hardware Ratio Index (HRI)",
+        "profile_label": "Governor Profile",
+        "diagnosis_gpu_dominant": "SEVERE CPU BOTTLENECK: CPU is significantly older or weaker than your GPU. Local tensors, embeddings, OCR and vision must be offloaded to GPU. CPU thread limits clamped to prevent editor UI stalls.",
+        "diagnosis_cpu_dominant": "CPU DOMINANT SYSTEM: Powerful multi-core CPU with basic or integrated GPU. Inference routed to AVX2/AVX-512 to preserve VRAM and eliminate PCIe overhead.",
+        "diagnosis_balanced": "BALANCED SYSTEM: CPU and GPU capabilities are closely matched. Symmetric 50/50 hybrid workload distribution.",
+        "policies_applied": "Governor policies applied successfully to user environment.",
+        "thread_clamp_applied": "Thread pool clamped to prevent context-switching storms on weak cores.",
+        "cache_recommendation": "Defender Notice: Exclude local cache directories (.gemini, .claude-mem, uv) from realtime AV scanning to cut phantom CPU load.",
+        "table_component": "Component",
+        "table_score": "Score",
+        "table_state": "Allocated Backend",
+        "embeddings": "Vector Embeddings",
+        "vision_ocr": "Vision & OCR",
+        "transcription": "Audio ASR",
+        "electron_render": "IDE / UI Rasterization",
+        "thread_limits": "Max Worker Threads",
+        "priority": "Subprocess Priority"
+    },
+    "pt": {
+        "title": "Hardware Arbiter",
+        "tagline": "Pare de sufocar sua CPU. Distribua cargas locais de IA e desenvolvimento entre CPU e GPU.",
+        "profiling_cpu": "Perfilando núcleos de CPU, microarquitetura e throughput de ponto flutuante...",
+        "profiling_gpu": "Auditando unidades computacionais da GPU, VRAM e provedores de execução (DirectML/CUDA/Vulkan)...",
+        "cpu_detected": "CPU Detectada",
+        "gpu_detected": "GPU Detectada",
+        "vram": "VRAM",
+        "cores": "Núcleos / Threads",
+        "cpu_score": "Pontuação de Benchmark da CPU",
+        "gpu_score": "Pontuação Nominal da GPU",
+        "hri_label": "Índice de Razão de Hardware (HRI)",
+        "profile_label": "Perfil do Governador",
+        "diagnosis_gpu_dominant": "GARGALO SEVERO DE CPU: A CPU é muito mais antiga ou fraca que a GPU. Tensores locais, embeddings, OCR e visão são forçados na GPU. Limites de threads aplicados na CPU para eliminar travamentos do editor.",
+        "diagnosis_cpu_dominant": "SISTEMA COM CPU DOMINANTE: CPU multi-core potente com GPU básica ou integrada. Inferência direcionada para AVX2/AVX-512 na CPU para poupar VRAM e evitar gargalo de PCIe.",
+        "diagnosis_balanced": "SISTEMA EQUILIBRADO: Capacidades de CPU e GPU proporcionais. Divisão simétrica de carga 50/50.",
+        "policies_applied": "Políticas do governador aplicadas com sucesso no ambiente do usuário.",
+        "thread_clamp_applied": "Conjunto de threads limitado para evitar tempestade de troca de contexto nos núcleos da CPU.",
+        "cache_recommendation": "Dica de Desempenho: Exclua pastas de cache (.gemini, .claude-mem, uv) da verificação do Windows Defender para eliminar uso fantasma de CPU.",
+        "table_component": "Componente",
+        "table_score": "Pontuação",
+        "table_state": "Backend Alocado",
+        "embeddings": "Embeddings Vetoriais",
+        "vision_ocr": "Visão & OCR",
+        "transcription": "Transcrição de Áudio",
+        "electron_render": "Rasterização de UI / Editor",
+        "thread_limits": "Threads Máximas por Tarefa",
+        "priority": "Prioridade de Subprocessos"
+    },
+    "zh": {
+        "title": "Hardware Arbiter (硬件裁决者)",
+        "tagline": "停止扼杀你的CPU。在CPU与GPU之间智能调度本地AI与开发工作负载。",
+        "profiling_cpu": "正在分析CPU核心数、微架构与浮点运算吞吐量...",
+        "profiling_gpu": "正在检测GPU计算单元、显存及运行环境 (DirectML/CUDA/Vulkan)...",
+        "cpu_detected": "检测到的 CPU",
+        "gpu_detected": "检测到的 GPU",
+        "vram": "显存 (VRAM)",
+        "cores": "核心 / 线程",
+        "cpu_score": "CPU 基准测试得分",
+        "gpu_score": "GPU 算力等级得分",
+        "hri_label": "硬件算力比例系数 (HRI)",
+        "profile_label": "调度配置策略",
+        "diagnosis_gpu_dominant": "CPU 严重瓶颈：CPU 算力明显落后于 GPU。本地张量、向量检索、OCR 和视觉任务全部卸载至 GPU。限制 CPU 线程池并发以防止 IDE 界面冻结。",
+        "diagnosis_cpu_dominant": "CPU 优势系统：强大的多核 CPU 配合核显或入门 GPU。本地计算优先调用 CPU AVX2/AVX-512 指令集，节省显存并降低 PCIe 开销。",
+        "diagnosis_balanced": "均衡系统：CPU 与 GPU 性能均衡，实施 50/50 混合工作负载协同调度。",
+        "policies_applied": "调度策略已成功写入系统用户环境。",
+        "thread_clamp_applied": "已锁定并发线程上限，避免上下文切换风暴占用老旧 CPU 核心。",
+        "cache_recommendation": "防病毒优化：建议在安全软件中将缓存目录 (.gemini, .claude-mem, uv) 设为排除项以减少无效 CPU 占用。",
+        "table_component": "系统组件",
+        "table_score": "性能得分",
+        "table_state": "分配后端",
+        "embeddings": "向量嵌入 (Embeddings)",
+        "vision_ocr": "视觉与 OCR",
+        "transcription": "语音转写 (ASR)",
+        "electron_render": "界面与编辑器硬件栅格化",
+        "thread_limits": "单任务最大工作线程",
+        "priority": "子进程调度优先级"
+    }
+}
+
+def t(key, lang="en"):
+    catalog = TRANSLATIONS.get(lang, TRANSLATIONS["en"])
+    return catalog.get(key, TRANSLATIONS["en"].get(key, key))

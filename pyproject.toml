@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hardware-arbiter"
+version = "0.1.0"
+authors = [
+  { name = "Santana Luiz", email = "santanaluiz181@gmail.com" }
+]
+description = "Autonomous Hardware Profiler & Workload Governor (CPU vs GPU balance for local AI)"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: System :: Hardware",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+dependencies = []
+
+[project.optional-dependencies]
+directml = [
+    "onnxruntime-directml>=1.20"
+]
+cuda = [
+    "onnxruntime-gpu>=1.20"
+]
+
+[project.scripts]
+hardware-arbiter = "hardware_arbiter.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hardware_arbiter*", "mascot*"]
