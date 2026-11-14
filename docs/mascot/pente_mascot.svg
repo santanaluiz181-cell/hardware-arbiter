@@ -1,399 +1,529 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" role="img" aria-label="Pente Fino Panda Mascot — Combing chaotic noodles into silky GPU laser streams">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 571" width="100%" height="100%" role="img" aria-label="Mascote Pente — Penteando fios caóticos em feixes de laser GPU">
   <defs>
-    <!-- Background Aura Glow -->
-    <radialGradient id="panda-aura" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.12"/>
-      <stop offset="50%" stop-color="#00f2fe" stop-opacity="0.04"/>
-      <stop offset="100%" stop-color="#141724" stop-opacity="0"/>
+    <!-- Background Canvas Aura Glow -->
+    <radialGradient id="pente-bg-aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.14"/>
+      <stop offset="60%" stop-color="#00f2fe" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#232532" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Panda Dark Fur Gradient -->
-    <linearGradient id="panda-dark" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#5a5662"/>
-      <stop offset="50%" stop-color="#4a4752"/>
-      <stop offset="100%" stop-color="#383540"/>
-    </linearGradient>
+    <!-- Floor Drop Shadow below Pente -->
+    <radialGradient id="pente-floor-shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0e1017" stop-opacity="0.85"/>
+      <stop offset="65%" stop-color="#0e1017" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0e1017" stop-opacity="0"/>
+    </radialGradient>
 
-    <!-- Panda Cream Face & Belly -->
-    <linearGradient id="panda-cream" x1="0%" y1="0%" x2="0%" y2="100%">
+    <!-- Warm Cream Face and Belly Center (#F0DED2) -->
+    <linearGradient id="pente-cream" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#fdfbf7"/>
-      <stop offset="70%" stop-color="#f5ede0"/>
-      <stop offset="100%" stop-color="#ebdcc9"/>
+      <stop offset="65%" stop-color="#f2ded2"/>
+      <stop offset="100%" stop-color="#e6cfc2"/>
     </linearGradient>
 
-    <!-- Navy Waistcoat / Vest -->
-    <linearGradient id="panda-vest" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2a324b"/>
-      <stop offset="100%" stop-color="#191f33"/>
+    <!-- Dark Fur Mask / Patches / Ears (#7E6C6A to #4a4752) -->
+    <linearGradient id="pente-patch" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8a7977"/>
+      <stop offset="50%" stop-color="#7a6866"/>
+      <stop offset="100%" stop-color="#645351"/>
     </linearGradient>
 
-    <!-- Amber Comb Material -->
-    <linearGradient id="comb-amber" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fbb44c"/>
-      <stop offset="40%" stop-color="#e5933a"/>
-      <stop offset="100%" stop-color="#c4711e"/>
+    <!-- Body Fur Base -->
+    <linearGradient id="pente-body-fur" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6b5b5a"/>
+      <stop offset="50%" stop-color="#554746"/>
+      <stop offset="100%" stop-color="#3e3433"/>
     </linearGradient>
 
-    <!-- Glow Filters for Neon Cyan Noodles and Lasers -->
-    <filter id="cyan-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#00f2fe" flood-opacity="0.9"/>
-      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#0284c7" flood-opacity="0.5"/>
+    <!-- Dark Navy Formal Vest (#22445D to #162a3a) -->
+    <linearGradient id="pente-vest" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2b516e"/>
+      <stop offset="60%" stop-color="#203d54"/>
+      <stop offset="100%" stop-color="#142634"/>
+    </linearGradient>
+
+    <!-- Amber Comb Material (#EE992C) -->
+    <linearGradient id="comb-amber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb74d"/>
+      <stop offset="35%" stop-color="#f59324"/>
+      <stop offset="70%" stop-color="#df7912"/>
+      <stop offset="100%" stop-color="#b85a06"/>
+    </linearGradient>
+
+    <!-- Comb Spine Gold Highlight -->
+    <linearGradient id="comb-gold-rim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="50%" stop-color="#fed7aa"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+
+    <!-- Cute Cheeks Rosy Glow (#F4A2A8) -->
+    <radialGradient id="pente-cheek" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f4a2a8" stop-opacity="0.95"/>
+      <stop offset="70%" stop-color="#f4a2a8" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#f4a2a8" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Neon Cyan Glow Filters for Noodles and Lasers -->
+    <filter id="neon-cyan-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00f2fe" flood-opacity="0.95"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#0284c7" flood-opacity="0.6"/>
     </filter>
 
-    <radialGradient id="cheek-glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#f47285" stop-opacity="0.9"/>
-      <stop offset="70%" stop-color="#f47285" stop-opacity="0.4"/>
-      <stop offset="100%" stop-color="#f47285" stop-opacity="0"/>
-    </radialGradient>
+    <filter id="laser-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="3.5" flood-color="#00f2fe" flood-opacity="1"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="9" flood-color="#38bdf8" flood-opacity="0.75"/>
+    </filter>
 
-    <!-- ================= INLINE KEYFRAME ANIMATIONS ================= -->
+    <!-- ================= KEYFRAME ANIMATIONS ================= -->
     <style>
-      /* 1. Body Breathing and Idle Floating */
-      .char-breathe {
-        animation: breatheAnim 3.8s ease-in-out infinite;
-        transform-origin: 480px 280px;
+      /* 1. Organic Body Breathing */
+      .anim-body-breathe {
+        animation: bodyBreathe 4.2s ease-in-out infinite;
+        transform-origin: 512px 450px;
       }
-      @keyframes breatheAnim {
+      @keyframes bodyBreathe {
         0%, 100% { transform: translateY(0px) scale(1); }
-        50% { transform: translateY(-4px) scale(1.008); }
+        50% { transform: translateY(-3.5px) scale(1.012, 1.015); }
       }
 
-      /* 2. Rhythmic Combing Arm and Comb Motion */
-      .comb-motion {
-        animation: combStroke 2.2s ease-in-out infinite;
-        transform-origin: 470px 300px;
+      /* 2. Rhythmic Combing Action (Arms and Comb) */
+      .anim-combing {
+        animation: combStrokeMotion 2.4s ease-in-out infinite;
+        transform-origin: 515px 365px;
       }
-      @keyframes combStroke {
-        0%, 100% { transform: translate(0px, 0px) rotate(-1.5deg); }
-        25% { transform: translate(6px, -2px) rotate(1deg); }
-        50% { transform: translate(14px, 1px) rotate(3deg); }
-        75% { transform: translate(4px, 3px) rotate(0deg); }
+      @keyframes combStrokeMotion {
+        0%, 100% { transform: translate(0px, 0px) rotate(-1.2deg); }
+        25% { transform: translate(4px, -2px) rotate(0.8deg); }
+        50% { transform: translate(9px, 1px) rotate(2.4deg); }
+        75% { transform: translate(3px, 2px) rotate(0deg); }
       }
 
-      /* 3. Blinking Eyes */
-      .eye-blink {
-        animation: blinkAnim 4.8s ease-in-out infinite;
-        transform-origin: 480px 230px;
+      /* 3. Eye Blinking (Anime scaleY) */
+      .anim-blink {
+        animation: eyeBlinkAnim 4.6s ease-in-out infinite;
+        transform-origin: 512px 276px;
       }
-      @keyframes blinkAnim {
+      @keyframes eyeBlinkAnim {
         0%, 93%, 100% { transform: scaleY(1); }
         95.5% { transform: scaleY(0.08); }
       }
 
-      /* 4. Pupils Curious Eye Movement */
-      .pupil-track {
-        animation: pupilLook 4.8s ease-in-out infinite;
+      /* 4. Pupils Curious Drifting */
+      .anim-pupils {
+        animation: pupilDrift 7.2s ease-in-out infinite;
       }
-      @keyframes pupilLook {
-        0%, 20% { transform: translate(0px, 0px); }
-        30%, 55% { transform: translate(-3px, 1px); }
-        65%, 90% { transform: translate(3px, -1px); }
-        100% { transform: translate(0px, 0px); }
+      @keyframes pupilDrift {
+        0%, 25%, 100% { transform: translate(0px, 0px); }
+        35%, 55% { transform: translate(-2.5px, 0.8px); }
+        65%, 85% { transform: translate(2.2px, -0.8px); }
       }
 
-      /* 5. Snout and Smile Cheerful Twitch */
-      .snout-twitch {
-        animation: snoutAnim 3.8s ease-in-out infinite;
-        transform-origin: 475px 260px;
+      /* 5. Snout Kawaii Twitch */
+      .anim-snout {
+        animation: snoutTwitchAnim 3.8s ease-in-out infinite;
+        transform-origin: 511px 293px;
       }
-      @keyframes snoutAnim {
+      @keyframes snoutTwitchAnim {
         0%, 100% { transform: translateY(0px) scale(1); }
-        45% { transform: translateY(-1.2px) scale(1.02); }
-        55% { transform: translateY(-1.2px) scale(0.98); }
+        45% { transform: translateY(-1.2px) scale(1.03); }
+        55% { transform: translateY(-0.8px) scale(0.98); }
       }
 
-      /* 6. Ear Twitches */
-      .ear-l {
-        animation: earTwitchL 4.2s ease-in-out infinite;
-        transform-origin: 395px 155px;
+      /* 6. Ears Twitches */
+      .anim-ear-l {
+        animation: earTwitchLeft 4.5s ease-in-out infinite;
+        transform-origin: 410px 190px;
       }
-      .ear-r {
-        animation: earTwitchR 4.2s ease-in-out infinite;
-        transform-origin: 565px 155px;
+      .anim-ear-r {
+        animation: earTwitchRight 4.5s ease-in-out infinite;
+        transform-origin: 614px 190px;
       }
-      @keyframes earTwitchL {
-        0%, 85%, 100% { transform: rotate(0deg); }
+      @keyframes earTwitchLeft {
+        0%, 86%, 100% { transform: rotate(0deg); }
         89% { transform: rotate(-5deg); }
-        93% { transform: rotate(3deg); }
+        93% { transform: rotate(2deg); }
       }
-      @keyframes earTwitchR {
-        0%, 85%, 100% { transform: rotate(0deg); }
-        89% { transform: rotate(6deg); }
+      @keyframes earTwitchRight {
+        0%, 86%, 100% { transform: rotate(0deg); }
+        89% { transform: rotate(5deg); }
         93% { transform: rotate(-2deg); }
       }
 
       /* 7. Wavy Chaotic Noodles (Left Side) */
-      .noodle-1 { animation: noodleWiggle1 3.2s ease-in-out infinite alternate; }
-      .noodle-2 { animation: noodleWiggle2 2.8s ease-in-out infinite alternate; }
-      .noodle-3 { animation: noodleWiggle3 3.6s ease-in-out infinite alternate; }
-      .noodle-4 { animation: noodleWiggle4 2.5s ease-in-out infinite alternate; }
-      @keyframes noodleWiggle1 {
+      .noodle-anim-1 { animation: waveNoodle1 3.2s ease-in-out infinite alternate; }
+      .noodle-anim-2 { animation: waveNoodle2 2.7s ease-in-out infinite alternate; }
+      .noodle-anim-3 { animation: waveNoodle3 3.5s ease-in-out infinite alternate; }
+      .noodle-anim-4 { animation: waveNoodle4 2.4s ease-in-out infinite alternate; }
+      @keyframes waveNoodle1 {
         0% { transform: translate(0px, 0px) scaleY(1); }
-        100% { transform: translate(-8px, 6px) scaleY(1.08); }
+        100% { transform: translate(-6px, 5px) scaleY(1.06); }
       }
-      @keyframes noodleWiggle2 {
+      @keyframes waveNoodle2 {
         0% { transform: translate(0px, 0px) scaleY(1); }
-        100% { transform: translate(6px, -7px) scaleY(0.94); }
+        100% { transform: translate(6px, -5px) scaleY(0.95); }
       }
-      @keyframes noodleWiggle3 {
-        0% { transform: translate(0px, 0px) rotate(0deg); }
-        100% { transform: translate(-4px, -5px) rotate(1.2deg); }
-      }
-      @keyframes noodleWiggle4 {
+      @keyframes waveNoodle3 {
         0% { transform: translate(0px, 0px); }
-        100% { transform: translate(7px, 5px); }
+        100% { transform: translate(-4px, -4px); }
+      }
+      @keyframes waveNoodle4 {
+        0% { transform: translate(0px, 0px); }
+        100% { transform: translate(5px, 4px); }
       }
 
       /* 8. Floating Particles on Chaotic Side */
-      .bubble-float {
-        animation: bubbleFloat 2.6s ease-in-out infinite alternate;
+      .anim-particles {
+        animation: particleFloat 2.8s ease-in-out infinite alternate;
       }
-      @keyframes bubbleFloat {
-        0% { transform: translateY(0px) opacity(0.6); }
-        100% { transform: translateY(-8px) opacity(1); }
+      @keyframes particleFloat {
+        0% { transform: translateY(0px) opacity(0.7); }
+        100% { transform: translateY(-7px) opacity(1); }
       }
 
       /* 9. Silky Straight Lasers (Right Side) */
-      .laser-stream {
-        stroke-dasharray: 120 40;
-        animation: laserFlow 1.8s linear infinite;
+      .laser-dash {
+        stroke-dasharray: 90 28;
+        animation: laserFlowMove 1.6s linear infinite;
       }
-      @keyframes laserFlow {
-        0% { stroke-dashoffset: 320; }
+      @keyframes laserFlowMove {
+        0% { stroke-dashoffset: 236; }
         100% { stroke-dashoffset: 0; }
       }
-      .laser-pulse {
-        animation: beamPulse 1.6s ease-in-out infinite alternate;
+      .laser-pulse-glow {
+        animation: laserPulseAnim 1.5s ease-in-out infinite alternate;
       }
-      @keyframes beamPulse {
-        0% { opacity: 0.85; stroke-width: 4.5px; }
-        100% { opacity: 1; stroke-width: 6.5px; }
+      @keyframes laserPulseAnim {
+        0% { opacity: 0.88; stroke-width: 4px; }
+        100% { opacity: 1; stroke-width: 6px; }
       }
     </style>
   </defs>
 
-  <!-- Deep Slate Canvas Backdrop (#171822 matching user image) -->
-  <rect width="960" height="480" fill="#171822"/>
-  <circle cx="480" cy="260" r="280" fill="url(#panda-aura)"/>
+  <!-- ================= 1. CANVAS BACKGROUND ================= -->
+  <rect width="1024" height="571" fill="#232532"/>
+  <!-- Ambient Center Glow behind Character -->
+  <circle cx="512" cy="310" r="290" fill="url(#pente-bg-aura)"/>
 
-  <!-- Floor Shadow for Mascot -->
-  <ellipse cx="480" cy="385" rx="145" ry="24" fill="#0c0e14" opacity="0.75"/>
-
-  <!-- ================= LEFT SIDE: CHAOTIC ENTANGLED NOODLES ================= -->
-  <!-- Wavy, electric cyan noodles twisting in chaos before entering the comb -->
-  <g id="chaotic-noodles" filter="url(#cyan-glow)" stroke="#00f2fe" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Noodle 1 (Deep loop top) -->
-    <path class="noodle-1" stroke-width="4.5"
-          d="M 20 250 Q 70 200 130 250 T 210 230 C 270 200, 310 280, 390 270 L 440 285"/>
-
-    <!-- Noodle 2 (High energy swirl) -->
-    <path class="noodle-2" stroke-width="5"
-          d="M 10 270 C 60 300, 90 230, 140 230 C 190 230, 210 320, 270 310 Q 340 300 425 295"/>
-
-    <!-- Noodle 3 (Bottom wave loop) -->
-    <path class="noodle-3" stroke-width="4"
-          d="M 30 300 Q 80 340 140 310 C 200 280, 240 340, 310 320 T 435 305"/>
-
-    <!-- Noodle 4 (Mid entangled cord) -->
-    <path class="noodle-4" stroke-width="5.5"
-          d="M 15 285 C 80 250, 110 310, 170 270 Q 240 220 330 275 L 430 300"/>
-
-    <!-- Noodle 5 (Outer wild tendril) -->
-    <path class="noodle-1" stroke-width="3.5"
-          d="M 40 230 Q 90 270 160 210 T 280 250 C 340 270, 370 285, 420 290"/>
-
-    <!-- Noodle 6 (Bottom loop swirl) -->
-    <path class="noodle-2" stroke-width="4"
-          d="M 50 320 C 110 360, 160 320, 200 350 Q 280 340 350 315 L 445 310"/>
-  </g>
-
-  <!-- Floating Particles & Energy Bubbles around the chaotic strands -->
-  <g id="sparkle-bubbles" class="bubble-float" fill="#00f2fe" opacity="0.85">
-    <circle cx="160" cy="225" r="3.5"/>
-    <circle cx="215" cy="245" r="4.5"/>
-    <circle cx="130" cy="285" r="2.5"/>
-    <circle cx="295" cy="235" r="3"/>
-    <circle cx="255" cy="335" r="4"/>
-    <circle cx="340" cy="255" r="3.5"/>
-    <circle cx="380" cy="330" r="3"/>
-    <circle cx="95" cy="325" r="2.5"/>
-    <!-- Tiny Hollow Rings -->
-    <circle cx="180" cy="330" r="4" fill="none" stroke="#00f2fe" stroke-width="1.8"/>
-    <circle cx="310" cy="335" r="4.5" fill="none" stroke="#00f2fe" stroke-width="2"/>
-    <circle cx="70" cy="265" r="3" fill="none" stroke="#00f2fe" stroke-width="1.5"/>
-  </g>
+  <!-- ================= 2. FLOOR DROP SHADOW ================= -->
+  <ellipse cx="512" cy="466" rx="175" ry="24" fill="url(#pente-floor-shadow)"/>
 
 
-  <!-- ================= RIGHT SIDE: SILKY ORGANIZED GPU LASER STRANDS ================= -->
-  <!-- Perfectly horizontal, glowing, razor-sharp streams gliding smoothly into the horizon -->
-  <g id="organized-lasers" filter="url(#cyan-glow)">
-    <!-- 6 Razor-sharp parallel laser lines originating directly from comb teeth -->
-    <line class="laser-stream laser-pulse" x1="520" y1="265" x2="960" y2="265" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
-    <line class="laser-stream laser-pulse" x1="530" y1="277" x2="960" y2="277" stroke="#38bdf8" stroke-width="5.5" stroke-linecap="round"/>
-    <line class="laser-stream laser-pulse" x1="535" y1="289" x2="960" y2="289" stroke="#00f2fe" stroke-width="6" stroke-linecap="round"/>
-    <line class="laser-stream laser-pulse" x1="540" y1="301" x2="960" y2="301" stroke="#38bdf8" stroke-width="5.5" stroke-linecap="round"/>
-    <line class="laser-stream laser-pulse" x1="535" y1="313" x2="960" y2="313" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
-    <line class="laser-stream laser-pulse" x1="525" y1="325" x2="960" y2="325" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
-  </g>
+  <!-- ================= 3. ANIMAL MASCOT "PENTE" (BACK + BODY LAYERS) ================= -->
+  <g class="anim-body-breathe" id="mascote-pente-root">
 
-
-  <!-- ================= CENTER: PANDINHA DAPPER MASCOT ================= -->
-  <g class="char-breathe" id="pandinha-mascot">
-    
-    <!-- Outer Sticker Border / Halo (Identity matching Foquinha, Fox, Elephant) -->
-    <g id="sticker-halo" stroke="#383d4f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.65">
-      <!-- Outer Ear Left -->
-      <circle cx="395" cy="155" r="32"/>
-      <!-- Outer Ear Right -->
-      <circle cx="565" cy="155" r="32"/>
-      <!-- Outer Loaf Body Silhouette -->
-      <path d="M 360 365 
-               L 360 215 
-               C 360 135 415 130 480 130 
-               C 545 130 600 135 600 215 
-               L 600 365 
-               C 600 375 588 375 580 375 
-               L 380 375 
-               C 372 375 360 375 360 365 Z"/>
+    <!-- 3A. STICKER HALO BACKING (Unified protective outline matching Phanty & Foquinha) -->
+    <g id="pente-sticker-halo" stroke="#111218" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" fill="#111218">
+      <!-- Left Ear Halo -->
+      <circle cx="410" cy="190" r="34"/>
+      <!-- Right Ear Halo -->
+      <circle cx="614" cy="190" r="34"/>
+      <!-- Main Loaf Body Halo -->
+      <path d="M 512 155
+               C 465 155, 410 180, 386 225
+               C 368 255, 360 285, 366 315
+               C 350 345, 345 385, 355 418
+               C 362 440, 415 448, 435 448
+               C 445 468, 485 468, 494 452
+               C 500 444, 524 444, 530 452
+               C 539 468, 579 468, 589 448
+               C 609 448, 662 440, 669 418
+               C 679 385, 674 345, 658 315
+               C 664 285, 656 255, 638 225
+               C 614 180, 559 155, 512 155 Z"/>
     </g>
 
-    <!-- Ears Behind Body -->
-    <!-- Left Ear -->
-    <g class="ear-l">
-      <circle cx="395" cy="155" r="30" fill="url(#panda-dark)" stroke="#111218" stroke-width="7"/>
-      <circle cx="395" cy="155" r="16" fill="#36333c"/>
-    </g>
-    <!-- Right Ear -->
-    <g class="ear-r">
-      <circle cx="565" cy="155" r="30" fill="url(#panda-dark)" stroke="#111218" stroke-width="7"/>
-      <circle cx="565" cy="155" r="16" fill="#36333c"/>
+    <!-- Outer Soft Grey Sticker Rim (#44485c) -->
+    <g stroke="#44485c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.65">
+      <circle cx="410" cy="190" r="34"/>
+      <circle cx="614" cy="190" r="34"/>
+      <path d="M 512 155
+               C 465 155, 410 180, 386 225
+               C 368 255, 360 285, 366 315
+               C 350 345, 345 385, 355 418
+               C 362 440, 415 448, 435 448
+               C 445 468, 485 468, 494 452
+               C 500 444, 524 444, 530 452
+               C 539 468, 579 468, 589 448
+               C 609 448, 662 440, 669 418
+               C 679 385, 674 345, 658 315
+               C 664 285, 656 255, 638 225
+               C 614 180, 559 155, 512 155 Z"/>
     </g>
 
-    <!-- Main Chubby Loaf Body -->
-    <path id="body-base"
-          d="M 365 360 
-             L 365 220 
-             C 365 140 415 135 480 135 
-             C 545 135 595 140 595 220 
-             L 595 360 
-             C 595 372 585 372 575 372 
-             L 385 372 
-             C 375 372 365 372 365 360 Z" 
-          fill="url(#panda-dark)" stroke="#111218" stroke-width="8" stroke-linejoin="round"/>
+    <!-- 3B. ROUNDED EARS BEHIND BODY -->
+    <!-- Left Ear with Animated Twitch -->
+    <g class="anim-ear-l" id="left-ear">
+      <circle cx="410" cy="190" r="32" fill="url(#pente-patch)" stroke="#111218" stroke-width="9"/>
+      <circle cx="410" cy="190" r="17" fill="#4d3e3d"/>
+    </g>
+    <!-- Right Ear with Animated Twitch -->
+    <g class="anim-ear-r" id="right-ear">
+      <circle cx="614" cy="190" r="32" fill="url(#pente-patch)" stroke="#111218" stroke-width="9"/>
+      <circle cx="614" cy="190" r="17" fill="#4d3e3d"/>
+    </g>
 
-    <!-- Panda Eye Patches (Signature Dark Gray/Brown Fur Mask on Sides) -->
+    <!-- 3C. MAIN CHUBBY PEAR/BEAN BODY SILHOUETTE (Non-boxy, organic curves) -->
+    <path id="pente-body-base"
+          d="M 512 155
+             C 465 155, 410 180, 386 225
+             C 368 255, 360 285, 366 315
+             C 350 345, 345 385, 355 418
+             C 362 440, 415 448, 435 448
+             C 445 468, 485 468, 494 452
+             C 500 444, 524 444, 530 452
+             C 539 468, 579 468, 589 448
+             C 609 448, 662 440, 669 418
+             C 679 385, 674 345, 658 315
+             C 664 285, 656 255, 638 225
+             C 614 180, 559 155, 512 155 Z"
+          fill="url(#pente-body-fur)" stroke="#111218" stroke-width="9" stroke-linejoin="round"/>
+
+    <!-- 3D. TAUPE/GREY EYE FUR PATCHES -->
     <!-- Left Eye Mask Patch -->
-    <path d="M 366 215 C 366 160 410 160 445 190 C 475 215 470 280 435 285 C 390 290 366 265 366 215 Z" 
-          fill="url(#panda-dark)"/>
+    <path d="M 386 225
+             C 368 255, 362 285, 366 315
+             C 375 330, 415 330, 455 315
+             C 485 295, 485 240, 455 210
+             C 430 185, 400 200, 386 225 Z"
+          fill="url(#pente-patch)"/>
+
     <!-- Right Eye Mask Patch -->
-    <path d="M 594 215 C 594 160 550 160 515 190 C 485 215 490 280 525 285 C 570 290 594 265 594 215 Z" 
-          fill="url(#panda-dark)"/>
+    <path d="M 638 225
+             C 656 255, 662 285, 658 315
+             C 649 330, 609 330, 569 315
+             C 539 295, 539 240, 569 210
+             C 594 185, 624 200, 638 225 Z"
+          fill="url(#pente-patch)"/>
 
-    <!-- Light Warm Cream Face & Belly Center (Panda inverted bib) -->
-    <path d="M 445 180 
-             Q 480 172 515 180 
-             C 535 220 540 310 525 365 
-             L 435 365 
-             C 420 310 425 220 445 180 Z" 
-          fill="url(#panda-cream)"/>
+    <!-- 3E. WARM CREAM FACE & BELLY CENTER (#F0DED2) -->
+    <!-- Hourglass shape flowing down the middle between the patches -->
+    <path d="M 512 158
+             C 485 158, 465 180, 455 210
+             C 485 240, 485 295, 455 315
+             C 440 322, 420 335, 420 355
+             C 420 395, 435 440, 494 450
+             C 502 443, 522 443, 530 450
+             C 589 440, 604 395, 604 355
+             C 604 335, 584 322, 569 315
+             C 539 295, 539 240, 569 210
+             C 559 180, 539 158, 512 158 Z"
+          fill="url(#pente-cream)"/>
 
-    <!-- Dark Navy Formal Vest (Dapper waistcoat) -->
-    <path d="M 367 305 
-             L 415 315 
-             L 480 340 
-             L 545 315 
-             L 593 305 
-             L 594 365 
-             L 366 365 Z" 
-          fill="url(#panda-vest)" stroke="#111218" stroke-width="6" stroke-linejoin="round"/>
-    <!-- Lapel center slit of vest -->
-    <path d="M 480 340 L 480 365" stroke="#111218" stroke-width="4.5"/>
+    <!-- 3F. DARK NAVY FORMAL VEST (Over torso, flanking belly center) -->
+    <!-- Left Vest Flap -->
+    <path d="M 366 325
+             C 350 355, 348 395, 358 420
+             C 365 435, 410 445, 435 445
+             L 460 380
+             C 435 365, 400 345, 366 325 Z"
+          fill="url(#pente-vest)" stroke="#111218" stroke-width="7" stroke-linejoin="round"/>
 
-    <!-- Soft Horizontal Oval Blush (Warm Pink) -->
-    <ellipse cx="405" cy="265" rx="20" ry="11" fill="url(#cheek-glow)"/>
-    <ellipse cx="555" cy="265" rx="20" ry="11" fill="url(#cheek-glow)"/>
+    <!-- Right Vest Flap -->
+    <path d="M 658 325
+             C 674 355, 676 395, 666 420
+             C 659 435, 614 445, 589 445
+             L 564 380
+             C 589 365, 624 345, 658 325 Z"
+          fill="url(#pente-vest)" stroke="#111218" stroke-width="7" stroke-linejoin="round"/>
 
-    <!-- BIG EXPRESSIVE ANIME EYES WITH TWO GLOSSY HIGHLIGHT DOTS -->
-    <!-- Left Eye -->
-    <g class="eye-blink" id="left-eye-group">
-      <circle cx="435" cy="235" r="23" fill="#ffffff" stroke="#111218" stroke-width="6"/>
-      <circle class="pupil-track" cx="436" cy="235" r="16" fill="#111218"/>
-      <!-- Primary Big Highlight Dot (Top-Left) -->
-      <circle class="pupil-track" cx="441" cy="229" r="6.5" fill="#ffffff"/>
-      <!-- Secondary Small Highlight Dot (Bottom-Right) -->
-      <circle class="pupil-track" cx="430" cy="242" r="3" fill="#ffffff"/>
-    </g>
+    <!-- 3G. SWEET ROSY BLUSH CHEEKS (#F4A2A8) -->
+    <ellipse cx="421.0" cy="312.2" rx="25" ry="16" fill="url(#pente-cheek)"/>
+    <ellipse cx="602.2" cy="312.2" rx="25" ry="16" fill="url(#pente-cheek)"/>
 
-    <!-- Right Eye -->
-    <g class="eye-blink" id="right-eye-group">
-      <circle cx="525" cy="235" r="23" fill="#ffffff" stroke="#111218" stroke-width="6"/>
-      <circle class="pupil-track" cx="524" cy="235" r="16" fill="#111218"/>
-      <!-- Primary Big Highlight Dot (Top-Left) -->
-      <circle class="pupil-track" cx="529" cy="229" r="6.5" fill="#ffffff"/>
-      <!-- Secondary Small Highlight Dot (Bottom-Right) -->
-      <circle class="pupil-track" cx="518" cy="242" r="3" fill="#ffffff"/>
-    </g>
-
-    <!-- CUTE SNOUT & SWEET :3 KAWAII MOUTH -->
-    <g class="snout-twitch" id="kawaii-snout">
-      <!-- Dark Little Nose -->
-      <ellipse cx="480" cy="244" rx="6.5" ry="5" fill="#111218"/>
-      <circle cx="478.5" cy="242.5" r="1.5" fill="#ffffff"/>
-      <!-- Mouth line -->
-      <path d="M 480 248 L 480 254" stroke="#111218" stroke-width="3.5" stroke-linecap="round"/>
-      <!-- Rounded happy cat-smile :3 -->
-      <path d="M 467 253 Q 474 261 480 254 Q 486 261 493 253" 
-            fill="none" stroke="#111218" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-
-    <!-- STUBBY CHIBI PAWS AT BASE (Resting flat) -->
-    <!-- Left Bottom Foot -->
-    <path d="M 415 372 C 415 358 430 358 445 358 C 455 358 460 366 460 374 Z" 
-          fill="#2b2832" stroke="#111218" stroke-width="5" stroke-linejoin="round"/>
-    <!-- Right Bottom Foot -->
-    <path d="M 500 374 C 500 366 505 358 515 358 C 530 358 545 358 545 372 Z" 
-          fill="#2b2832" stroke="#111218" stroke-width="5" stroke-linejoin="round"/>
-
-
-    <!-- ================= RHYTHMIC COMBING ARMS & AMBER COMB ================= -->
-    <g class="comb-motion" id="arms-and-comb">
-      
-      <!-- The Amber Wood Hair Comb (Held slanted across the chest) -->
-      <g transform="translate(430, 260) rotate(18)">
-        <!-- Comb Spine (Ergonomic Curved Amber Back) -->
-        <rect x="0" y="0" width="115" height="24" rx="8" fill="url(#comb-amber)" stroke="#111218" stroke-width="5"/>
-        <line x1="8" y1="6" x2="105" y2="6" stroke="#fef08a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-
-        <!-- Comb Teeth (Facing downwards/sideways catching the noodles) -->
-        <!-- 8 Precision Teeth -->
-        <g fill="url(#comb-amber)" stroke="#111218" stroke-width="3.5" stroke-linejoin="round">
-          <rect x="15" y="22" width="6.5" height="30" rx="3"/>
-          <rect x="27" y="22" width="6.5" height="32" rx="3"/>
-          <rect x="39" y="22" width="6.5" height="33" rx="3"/>
-          <rect x="51" y="22" width="6.5" height="33" rx="3"/>
-          <rect x="63" y="22" width="6.5" height="33" rx="3"/>
-          <rect x="75" y="22" width="6.5" height="32" rx="3"/>
-          <rect x="87" y="22" width="6.5" height="30" rx="3"/>
-          <rect x="99" y="22" width="6.5" height="26" rx="3"/>
+    <!-- 3H. BIG ANIME EYES WITH DOUBLE WHITE HIGHLIGHTS -->
+    <g class="anim-blink" id="eyes-group">
+      <!-- Left Eye -->
+      <g id="eye-left">
+        <circle cx="453.1" cy="276.3" r="23" fill="#111218" stroke="#111218" stroke-width="3"/>
+        <g class="anim-pupils">
+          <!-- Primary Large White Catchlight (Top-Left) -->
+          <circle cx="445.5" cy="268.7" r="8.2" fill="#ffffff"/>
+          <!-- Secondary Small White Catchlight (Bottom-Right) -->
+          <circle cx="463.3" cy="286.4" r="3.9" fill="#ffffff"/>
         </g>
       </g>
-
-      <!-- Little Left Arm & Paw (Holding Left End of Comb) -->
-      <g id="left-arm">
-        <path d="M 395 295 Q 430 300 448 312 Q 440 326 420 320 Q 395 315 395 295 Z" 
-              fill="url(#panda-dark)" stroke="#111218" stroke-width="5" stroke-linejoin="round"/>
-        <!-- Rounded Chubby Paw hugging the comb -->
-        <circle cx="440" cy="312" r="14" fill="#3a3742" stroke="#111218" stroke-width="5"/>
-      </g>
-
-      <!-- Little Right Arm & Paw (Holding Center/Right of Comb) -->
-      <g id="right-arm">
-        <path d="M 565 295 Q 535 305 522 322 Q 532 334 550 325 Q 570 315 565 295 Z" 
-              fill="url(#panda-dark)" stroke="#111218" stroke-width="5" stroke-linejoin="round"/>
-        <!-- Rounded Chubby Paw hugging the comb -->
-        <circle cx="528" cy="320" r="14" fill="#3a3742" stroke="#111218" stroke-width="5"/>
+      <!-- Right Eye -->
+      <g id="eye-right">
+        <circle cx="571.9" cy="276.4" r="23" fill="#111218" stroke="#111218" stroke-width="3"/>
+        <g class="anim-pupils">
+          <!-- Primary Large White Catchlight (Top-Left) -->
+          <circle cx="564.0" cy="268.6" r="8.2" fill="#ffffff"/>
+          <!-- Secondary Small White Catchlight (Bottom-Right) -->
+          <circle cx="581.8" cy="286.2" r="3.9" fill="#ffffff"/>
+        </g>
       </g>
     </g>
 
+    <!-- 3I. KAWAII SNOUT & SWEET :3 CAT MOUTH -->
+    <g class="anim-snout" id="snout-group">
+      <!-- Cute Rounded Inverted-Triangle Nose -->
+      <path d="M 500 286
+               C 500 284, 523 284, 523 286
+               C 523 294, 517 301, 511.5 301
+               C 506 301, 500 294, 500 286 Z"
+            fill="#111218"/>
+      <!-- Nose Specular Highlight -->
+      <ellipse cx="508" cy="288" rx="2.5" ry="1.5" fill="#ffffff"/>
+
+      <!-- Vertical Philtrum line -->
+      <line x1="511.5" y1="301" x2="511.5" y2="307" stroke="#111218" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- Sweet :3 Cat-Smile Mouth -->
+      <path d="M 497 306
+               Q 504 314 511.5 307
+               Q 519 314 526 306"
+            fill="none" stroke="#111218" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- 3J. STUBBY BOTTOM FEET -->
+    <!-- Left Foot Pad -->
+    <path d="M 436 448 C 438 468, 480 472, 492 452" fill="#2d2524" stroke="#111218" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 452 463 L 452 456 M 468 465 L 468 457 M 482 462 L 482 456" stroke="#111218" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Right Foot Pad -->
+    <path d="M 532 452 C 544 472, 586 468, 588 448" fill="#2d2524" stroke="#111218" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 546 462 L 546 456 M 560 465 L 560 457 M 576 463 L 576 456" stroke="#111218" stroke-width="2.5" stroke-linecap="round"/>
+
+  </g> <!-- END MASCOT BASE -->
+
+
+  <!-- ================= 4. FOREGROUND: COMB, PAWS & FLOWING STRANDS ================= -->
+  <!-- CRITICAL: Rendered in FOREGROUND so strands and comb visibly pass IN FRONT of the body! -->
+
+  <!-- 4A. CHAOTIC ELECTRIC NOODLES (Left to Center Front of Body) -->
+  <g id="chaotic-noodles-layer" filter="url(#neon-cyan-glow)" stroke="#00f2fe" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Strand 1 (Top Wave: swooping from X=0 down across chest into comb) -->
+    <path class="noodle-anim-1" stroke-width="4.5"
+          d="M 0 280
+             C 65 245, 115 325, 175 285
+             C 235 250, 270 330, 320 285
+             C 365 250, 385 340, 420 375
+             C 440 395, 460 392, 485 390"/>
+
+    <!-- Strand 2 (Mid Wave: undulating loop across belly) -->
+    <path class="noodle-anim-2" stroke-width="5"
+          d="M 0 310
+             C 55 345, 95 280, 145 320
+             C 195 355, 235 300, 285 345
+             C 335 385, 375 335, 415 385
+             C 435 408, 460 400, 492 386"/>
+
+    <!-- Strand 3 (Deep Loop: gathering together in front of vest) -->
+    <path class="noodle-anim-3" stroke-width="4.2"
+          d="M 0 335
+             C 70 305, 105 375, 165 335
+             C 215 300, 255 365, 310 345
+             C 350 330, 375 395, 425 398
+             C 450 400, 472 392, 498 382"/>
+
+    <!-- Strand 4 (Lower Swirl: curving across lower belly into comb teeth) -->
+    <path class="noodle-anim-4" stroke-width="5.2"
+          d="M 0 365
+             C 60 405, 125 340, 180 385
+             C 235 425, 275 350, 330 385
+             C 370 410, 400 380, 435 408
+             C 455 418, 478 402, 505 378"/>
+
+    <!-- Strand 5 (Bottom Swirl: tight bundle entering the comb) -->
+    <path class="noodle-anim-1" stroke-width="3.8"
+          d="M 0 435
+             C 55 455, 105 390, 155 435
+             C 205 480, 265 410, 320 425
+             C 360 435, 390 412, 430 410
+             C 458 408, 485 395, 512 374"/>
+
+    <!-- Strand 6 (High Swirl: lively dynamic tendril) -->
+    <path class="noodle-anim-2" stroke-width="4"
+          d="M 0 250
+             C 75 225, 135 305, 195 270
+             C 255 235, 305 310, 365 330
+             C 405 345, 445 385, 480 392"/>
   </g>
+
+  <!-- Floating Energy Sparkles and Hollow Rings on Chaotic Left Side -->
+  <g class="anim-particles" fill="#00f2fe" opacity="0.9">
+    <circle cx="43" cy="255" r="3"/>
+    <circle cx="102" cy="279" r="3.5"/>
+    <circle cx="165" cy="275" r="4"/>
+    <circle cx="220" cy="407" r="3.5"/>
+    <circle cx="310" cy="262" r="3.5"/>
+    <circle cx="320" cy="421" r="4"/>
+    <circle cx="56" cy="425" r="4"/>
+    <circle cx="330" cy="337" r="3"/>
+    <circle cx="385" cy="354" r="2.5"/>
+    <circle cx="260" cy="385" r="3"/>
+    <!-- Hollow Floating Rings -->
+    <circle cx="112" cy="288" r="4.5" fill="none" stroke="#00f2fe" stroke-width="1.8"/>
+    <circle cx="330" cy="287" r="4" fill="none" stroke="#00f2fe" stroke-width="1.8"/>
+    <circle cx="164" cy="403" r="3.5" fill="none" stroke="#00f2fe" stroke-width="1.6"/>
+    <circle cx="238" cy="275" r="3" fill="none" stroke="#00f2fe" stroke-width="1.5"/>
+  </g>
+
+
+  <!-- 4B. RHYTHMIC COMBING AMBER COMB & CHUBBY PAWS (Front and Center) -->
+  <g class="anim-combing" id="comb-and-paws-rig">
+
+    <!-- The Amber Comb: Slanted from (455, 400) to (575, 335), angle ~ -28.4 deg -->
+    <g transform="translate(515, 368) rotate(-28.4)">
+
+      <!-- Comb Spine (Ergonomic Curved Amber Back) -->
+      <rect x="-70" y="-14" width="140" height="26" rx="9" fill="url(#comb-amber-grad)" stroke="#111218" stroke-width="6"/>
+      <!-- Gold Rim Catchlight along Spine -->
+      <line x1="-60" y1="-7" x2="60" y2="-7" stroke="url(#comb-gold-rim)" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+
+      <!-- Comb Teeth: Projecting downwards/rightwards -->
+      <g fill="url(#comb-amber-grad)" stroke="#111218" stroke-width="4.5" stroke-linejoin="round">
+        <rect x="-56" y="10" width="8" height="34" rx="4"/>
+        <rect x="-42" y="10" width="8" height="36" rx="4"/>
+        <rect x="-28" y="10" width="8" height="37" rx="4"/>
+        <rect x="-14" y="10" width="8" height="38" rx="4"/>
+        <rect x="0" y="10" width="8" height="38" rx="4"/>
+        <rect x="14" y="10" width="8" height="37" rx="4"/>
+        <rect x="28" y="10" width="8" height="36" rx="4"/>
+        <rect x="42" y="10" width="8" height="34" rx="4"/>
+      </g>
+    </g>
+
+    <!-- LEFT CHUBBY PAW (Holding the comb spine from the front) -->
+    <g id="left-paw-rig">
+      <!-- Arm connecting from shoulder -->
+      <path d="M 395 340 Q 425 350 445 362 Q 435 378 410 370 Z" fill="url(#pente-patch)" stroke="#111218" stroke-width="6"/>
+      <!-- Big Round Paw hugging the comb -->
+      <circle cx="455" cy="365" r="21" fill="url(#pente-patch)" stroke="#111218" stroke-width="7"/>
+      <!-- Soft Paw Pad highlight -->
+      <circle cx="452" cy="362" r="14" fill="#8c7a78"/>
+    </g>
+
+    <!-- RIGHT CHUBBY PAW (Holding the comb handle/end from the front) -->
+    <g id="right-paw-rig">
+      <!-- Arm connecting from shoulder -->
+      <path d="M 640 350 Q 610 365 590 375 Q 600 392 625 380 Z" fill="url(#pente-patch)" stroke="#111218" stroke-width="6"/>
+      <!-- Big Round Paw hugging the comb -->
+      <circle cx="582" cy="378" r="21" fill="url(#pente-patch)" stroke="#111218" stroke-width="7"/>
+      <!-- Soft Paw Pad highlight -->
+      <circle cx="585" cy="375" r="14" fill="#8c7a78"/>
+    </g>
+
+  </g> <!-- END COMB & PAWS RIG -->
+
+
+  <!-- 4C. SILKY PARALLEL GPU LASER STREAMS (Right Side: X=580 to X=1024) -->
+  <!-- 6 razor-sharp, glowing, perfectly parallel lines emerging directly from the comb teeth -->
+  <g id="organized-gpu-lasers" filter="url(#laser-glow)">
+    <!-- Line 1 (Y = 333.5) -->
+    <line class="laser-dash laser-pulse-glow" x1="575" y1="333.5" x2="1024" y2="333.5" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
+    <!-- Line 2 (Y = 345.5) -->
+    <line class="laser-dash laser-pulse-glow" x1="580" y1="345.5" x2="1024" y2="345.5" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+    <!-- Line 3 (Y = 356.0) -->
+    <line class="laser-dash laser-pulse-glow" x1="585" y1="356.0" x2="1024" y2="356.0" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
+    <!-- Line 4 (Y = 367.5) -->
+    <line class="laser-dash laser-pulse-glow" x1="588" y1="367.5" x2="1024" y2="367.5" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+    <!-- Line 5 (Y = 376.5) -->
+    <line class="laser-dash laser-pulse-glow" x1="582" y1="376.5" x2="1024" y2="376.5" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
+    <!-- Line 6 (Y = 386.5) -->
+    <line class="laser-dash laser-pulse-glow" x1="572" y1="386.5" x2="1024" y2="386.5" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
 </svg>

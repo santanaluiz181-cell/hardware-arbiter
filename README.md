@@ -14,21 +14,22 @@
 
 ---
 
-## 🪮🐼 Conheça o "Pandinha Pente Fino" (The Hardware Comb Mascot)
+## 🪮 Conheça o "Pente" (The Hardware Comb Mascot)
 
-O **Pandinha Pente Fino** é o mascote oficial do Hardware Arbiter. Ele segue o mesmo DNA visual e carisma dos mascotes anteriores do ecossistema: a **Foquinha** (MJ Notch), a **Raposa Kitsune** (Kitsune Router) e o **Elefante Phanty** (Ultimate Research / DESLOP):
+O **Pente** é o mascote oficial do Hardware Arbiter. Ele é um animalzinho dapper e fofo que personifica a triagem de hardware do ecossistema, criado com a mesma dedicação artesanal da **Foquinha** (MJ Notch), da **Raposa Kitsune** (Kitsune Router) e do **Elefante Phanty** (Ultimate Research / DESLOP):
 
-- **Anatomia & Animação Viva:**
-  - **Chibi Loaf Dapper:** O pandinha veste colete social azul-marinho, contorno sticker com halo protetor e patinhas repousadas.
-  - **Expressividade Real:** Respiração orgânica (`3.8s`), piscadas de olho periódicas com duplo brilho anime (`4.8s`), rastreamento de olhar por pupila, fungada de focinho kawaii e orelhas atentas.
-  - **Movimento Rítmico do Pente:** Seus bracinhos passam continuamente o pente de âmbar com 8 dentes de precisão (`2.2s ease-in-out`), desembaraçando o fluxo de tensores em tempo real.
-- **O Princípio Operacional do Pente:**
-  - **Macarrão Emaranhado à Esquerda (CPU Bottleneck):** Os nós caóticos e ondulantes de computação pesada (embeddings do ChromaDB, visão computacional, Whisper ASR) chegam fervendo em fios elétricos neon ciano.
-  - **Feixes de Laser Paralelos à Direita (GPU Offload):** Ao passarem pelos dentes do pente de âmbar, os nós se transformam em feixes de laser perfeitamente paralelos e contínuos, descarregados na GPU (DirectML / CUDA / Vulkan).
-  - **A Raiz Fica Limpa na CPU:** As rotinas leves de sistema (I/O, Git, terminal) permanecem assentadas na CPU, blindadas por **Thread Clamping (`OMP=2`, `UV=4`)** para o editor e o mouse nunca mais engasgarem.
+- **Anatomia & Animação Orgânica (SVG Vivo):**
+  - **Silhueta de Loaf/Feijão Orgânica:** Curvas suaves em pera/feijão com flat base, sticker halo (`#111218`), máscara facial taupe (`#7E6C6A`), focinho creme e colete social azul-marinho (`#22445D`).
+  - **Expressividade Real:** Respiração orgânica (`4.2s`), piscadas de olho periódicas com duplo brilho anime (`4.6s`), rastreamento de olhar por pupila, fungada de focinho com boca :3 e orelhas atentas que tremelicam.
+  - **Ação Viva de Pentear:** Suas patinhas redondas passam o pente de âmbar com 8 dentes de precisão (`2.4s`), desembaraçando os tensores em tempo real.
+- **Os Fios Passam Pela Frente (O Princípio Operacional):**
+  - **Fios Elétricos Caóticos à Esquerda (CPU Bottleneck):** Os nós de tensores pesados (embeddings, OCR, visão, Whisper ASR) chegam como mechas neon ciano cheias de nós e partículas elétricas.
+  - **Passagem Visível pela Frente do Corpo:** As mechas passam **visivelmente pela frente do peito e do colete do animalzinho**, entrando diretamente entre os dentes do pente de âmbar.
+  - **Feixes de Laser Paralelos à Direita (GPU Offload):** Saindo dos dentes do pente, as mechas são alinhadas em 6 feixes de laser horizontais perfeitamente paralelos e sincronizados, descarregados na GPU (DirectML / CUDA / Vulkan).
+  - **A Raiz Fica Limpa na CPU:** As rotinas leves de sistema (I/O, Git, terminal) permanecem assentadas na CPU, blindadas por **Thread Clamping (`OMP=2`, `UV=4`)** para o editor e o cursor nunca mais engasgarem.
 
 <p align="center">
-  <img src="mascot/pente_mascot.svg" alt="Pandinha Pente Fino Mascot — Combing chaotic noodles into silky GPU laser streams" width="560" />
+  <img src="mascot/pente_mascot.svg" alt="Mascote Pente — Penteando fios caóticos em feixes de laser GPU" width="700" />
 </p>
 
 ---

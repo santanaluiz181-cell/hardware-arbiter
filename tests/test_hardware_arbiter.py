@@ -129,15 +129,15 @@ class TestMascotSVGValidity(unittest.TestCase):
     def test_pente_mascot_contains_required_animations(self):
         content = self.pente_svg.read_text(encoding="utf-8")
         # Check required keyframe animations
-        self.assertIn("breatheAnim", content)
-        self.assertIn("combStroke", content)
-        self.assertIn("blinkAnim", content)
-        self.assertIn("pupilLook", content)
-        self.assertIn("noodleWiggle", content)
-        self.assertIn("laserFlow", content)
+        self.assertIn("bodyBreathe", content)
+        self.assertIn("combStrokeMotion", content)
+        self.assertIn("eyeBlinkAnim", content)
+        self.assertIn("pupilDrift", content)
+        self.assertIn("waveNoodle", content)
+        self.assertIn("laserFlowMove", content)
         # Check anatomy elements
-        self.assertIn("sticker-halo", content)
-        self.assertIn("arms-and-comb", content)
+        self.assertIn("pente-sticker-halo", content)
+        self.assertIn("comb-and-paws-rig", content)
 
 
 if __name__ == "__main__":
