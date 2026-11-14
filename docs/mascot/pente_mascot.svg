@@ -1,0 +1,399 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" role="img" aria-label="Pente Fino Panda Mascot — Combing chaotic noodles into silky GPU laser streams">
+  <defs>
+    <!-- Background Aura Glow -->
+    <radialGradient id="panda-aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.12"/>
+      <stop offset="50%" stop-color="#00f2fe" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#141724" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Panda Dark Fur Gradient -->
+    <linearGradient id="panda-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5a5662"/>
+      <stop offset="50%" stop-color="#4a4752"/>
+      <stop offset="100%" stop-color="#383540"/>
+    </linearGradient>
+
+    <!-- Panda Cream Face & Belly -->
+    <linearGradient id="panda-cream" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdfbf7"/>
+      <stop offset="70%" stop-color="#f5ede0"/>
+      <stop offset="100%" stop-color="#ebdcc9"/>
+    </linearGradient>
+
+    <!-- Navy Waistcoat / Vest -->
+    <linearGradient id="panda-vest" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a324b"/>
+      <stop offset="100%" stop-color="#191f33"/>
+    </linearGradient>
+
+    <!-- Amber Comb Material -->
+    <linearGradient id="comb-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbb44c"/>
+      <stop offset="40%" stop-color="#e5933a"/>
+      <stop offset="100%" stop-color="#c4711e"/>
+    </linearGradient>
+
+    <!-- Glow Filters for Neon Cyan Noodles and Lasers -->
+    <filter id="cyan-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#00f2fe" flood-opacity="0.9"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#0284c7" flood-opacity="0.5"/>
+    </filter>
+
+    <radialGradient id="cheek-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f47285" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#f47285" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f47285" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- ================= INLINE KEYFRAME ANIMATIONS ================= -->
+    <style>
+      /* 1. Body Breathing and Idle Floating */
+      .char-breathe {
+        animation: breatheAnim 3.8s ease-in-out infinite;
+        transform-origin: 480px 280px;
+      }
+      @keyframes breatheAnim {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-4px) scale(1.008); }
+      }
+
+      /* 2. Rhythmic Combing Arm and Comb Motion */
+      .comb-motion {
+        animation: combStroke 2.2s ease-in-out infinite;
+        transform-origin: 470px 300px;
+      }
+      @keyframes combStroke {
+        0%, 100% { transform: translate(0px, 0px) rotate(-1.5deg); }
+        25% { transform: translate(6px, -2px) rotate(1deg); }
+        50% { transform: translate(14px, 1px) rotate(3deg); }
+        75% { transform: translate(4px, 3px) rotate(0deg); }
+      }
+
+      /* 3. Blinking Eyes */
+      .eye-blink {
+        animation: blinkAnim 4.8s ease-in-out infinite;
+        transform-origin: 480px 230px;
+      }
+      @keyframes blinkAnim {
+        0%, 93%, 100% { transform: scaleY(1); }
+        95.5% { transform: scaleY(0.08); }
+      }
+
+      /* 4. Pupils Curious Eye Movement */
+      .pupil-track {
+        animation: pupilLook 4.8s ease-in-out infinite;
+      }
+      @keyframes pupilLook {
+        0%, 20% { transform: translate(0px, 0px); }
+        30%, 55% { transform: translate(-3px, 1px); }
+        65%, 90% { transform: translate(3px, -1px); }
+        100% { transform: translate(0px, 0px); }
+      }
+
+      /* 5. Snout and Smile Cheerful Twitch */
+      .snout-twitch {
+        animation: snoutAnim 3.8s ease-in-out infinite;
+        transform-origin: 475px 260px;
+      }
+      @keyframes snoutAnim {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        45% { transform: translateY(-1.2px) scale(1.02); }
+        55% { transform: translateY(-1.2px) scale(0.98); }
+      }
+
+      /* 6. Ear Twitches */
+      .ear-l {
+        animation: earTwitchL 4.2s ease-in-out infinite;
+        transform-origin: 395px 155px;
+      }
+      .ear-r {
+        animation: earTwitchR 4.2s ease-in-out infinite;
+        transform-origin: 565px 155px;
+      }
+      @keyframes earTwitchL {
+        0%, 85%, 100% { transform: rotate(0deg); }
+        89% { transform: rotate(-5deg); }
+        93% { transform: rotate(3deg); }
+      }
+      @keyframes earTwitchR {
+        0%, 85%, 100% { transform: rotate(0deg); }
+        89% { transform: rotate(6deg); }
+        93% { transform: rotate(-2deg); }
+      }
+
+      /* 7. Wavy Chaotic Noodles (Left Side) */
+      .noodle-1 { animation: noodleWiggle1 3.2s ease-in-out infinite alternate; }
+      .noodle-2 { animation: noodleWiggle2 2.8s ease-in-out infinite alternate; }
+      .noodle-3 { animation: noodleWiggle3 3.6s ease-in-out infinite alternate; }
+      .noodle-4 { animation: noodleWiggle4 2.5s ease-in-out infinite alternate; }
+      @keyframes noodleWiggle1 {
+        0% { transform: translate(0px, 0px) scaleY(1); }
+        100% { transform: translate(-8px, 6px) scaleY(1.08); }
+      }
+      @keyframes noodleWiggle2 {
+        0% { transform: translate(0px, 0px) scaleY(1); }
+        100% { transform: translate(6px, -7px) scaleY(0.94); }
+      }
+      @keyframes noodleWiggle3 {
+        0% { transform: translate(0px, 0px) rotate(0deg); }
+        100% { transform: translate(-4px, -5px) rotate(1.2deg); }
+      }
+      @keyframes noodleWiggle4 {
+        0% { transform: translate(0px, 0px); }
+        100% { transform: translate(7px, 5px); }
+      }
+
+      /* 8. Floating Particles on Chaotic Side */
+      .bubble-float {
+        animation: bubbleFloat 2.6s ease-in-out infinite alternate;
+      }
+      @keyframes bubbleFloat {
+        0% { transform: translateY(0px) opacity(0.6); }
+        100% { transform: translateY(-8px) opacity(1); }
+      }
+
+      /* 9. Silky Straight Lasers (Right Side) */
+      .laser-stream {
+        stroke-dasharray: 120 40;
+        animation: laserFlow 1.8s linear infinite;
+      }
+      @keyframes laserFlow {
+        0% { stroke-dashoffset: 320; }
+        100% { stroke-dashoffset: 0; }
+      }
+      .laser-pulse {
+        animation: beamPulse 1.6s ease-in-out infinite alternate;
+      }
+      @keyframes beamPulse {
+        0% { opacity: 0.85; stroke-width: 4.5px; }
+        100% { opacity: 1; stroke-width: 6.5px; }
+      }
+    </style>
+  </defs>
+
+  <!-- Deep Slate Canvas Backdrop (#171822 matching user image) -->
+  <rect width="960" height="480" fill="#171822"/>
+  <circle cx="480" cy="260" r="280" fill="url(#panda-aura)"/>
+
+  <!-- Floor Shadow for Mascot -->
+  <ellipse cx="480" cy="385" rx="145" ry="24" fill="#0c0e14" opacity="0.75"/>
+
+  <!-- ================= LEFT SIDE: CHAOTIC ENTANGLED NOODLES ================= -->
+  <!-- Wavy, electric cyan noodles twisting in chaos before entering the comb -->
+  <g id="chaotic-noodles" filter="url(#cyan-glow)" stroke="#00f2fe" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Noodle 1 (Deep loop top) -->
+    <path class="noodle-1" stroke-width="4.5"
+          d="M 20 250 Q 70 200 130 250 T 210 230 C 270 200, 310 280, 390 270 L 440 285"/>
+
+    <!-- Noodle 2 (High energy swirl) -->
+    <path class="noodle-2" stroke-width="5"
+          d="M 10 270 C 60 300, 90 230, 140 230 C 190 230, 210 320, 270 310 Q 340 300 425 295"/>
+
+    <!-- Noodle 3 (Bottom wave loop) -->
+    <path class="noodle-3" stroke-width="4"
+          d="M 30 300 Q 80 340 140 310 C 200 280, 240 340, 310 320 T 435 305"/>
+
+    <!-- Noodle 4 (Mid entangled cord) -->
+    <path class="noodle-4" stroke-width="5.5"
+          d="M 15 285 C 80 250, 110 310, 170 270 Q 240 220 330 275 L 430 300"/>
+
+    <!-- Noodle 5 (Outer wild tendril) -->
+    <path class="noodle-1" stroke-width="3.5"
+          d="M 40 230 Q 90 270 160 210 T 280 250 C 340 270, 370 285, 420 290"/>
+
+    <!-- Noodle 6 (Bottom loop swirl) -->
+    <path class="noodle-2" stroke-width="4"
+          d="M 50 320 C 110 360, 160 320, 200 350 Q 280 340 350 315 L 445 310"/>
+  </g>
+
+  <!-- Floating Particles & Energy Bubbles around the chaotic strands -->
+  <g id="sparkle-bubbles" class="bubble-float" fill="#00f2fe" opacity="0.85">
+    <circle cx="160" cy="225" r="3.5"/>
+    <circle cx="215" cy="245" r="4.5"/>
+    <circle cx="130" cy="285" r="2.5"/>
+    <circle cx="295" cy="235" r="3"/>
+    <circle cx="255" cy="335" r="4"/>
+    <circle cx="340" cy="255" r="3.5"/>
+    <circle cx="380" cy="330" r="3"/>
+    <circle cx="95" cy="325" r="2.5"/>
+    <!-- Tiny Hollow Rings -->
+    <circle cx="180" cy="330" r="4" fill="none" stroke="#00f2fe" stroke-width="1.8"/>
+    <circle cx="310" cy="335" r="4.5" fill="none" stroke="#00f2fe" stroke-width="2"/>
+    <circle cx="70" cy="265" r="3" fill="none" stroke="#00f2fe" stroke-width="1.5"/>
+  </g>
+
+
+  <!-- ================= RIGHT SIDE: SILKY ORGANIZED GPU LASER STRANDS ================= -->
+  <!-- Perfectly horizontal, glowing, razor-sharp streams gliding smoothly into the horizon -->
+  <g id="organized-lasers" filter="url(#cyan-glow)">
+    <!-- 6 Razor-sharp parallel laser lines originating directly from comb teeth -->
+    <line class="laser-stream laser-pulse" x1="520" y1="265" x2="960" y2="265" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
+    <line class="laser-stream laser-pulse" x1="530" y1="277" x2="960" y2="277" stroke="#38bdf8" stroke-width="5.5" stroke-linecap="round"/>
+    <line class="laser-stream laser-pulse" x1="535" y1="289" x2="960" y2="289" stroke="#00f2fe" stroke-width="6" stroke-linecap="round"/>
+    <line class="laser-stream laser-pulse" x1="540" y1="301" x2="960" y2="301" stroke="#38bdf8" stroke-width="5.5" stroke-linecap="round"/>
+    <line class="laser-stream laser-pulse" x1="535" y1="313" x2="960" y2="313" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
+    <line class="laser-stream laser-pulse" x1="525" y1="325" x2="960" y2="325" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+
+  <!-- ================= CENTER: PANDINHA DAPPER MASCOT ================= -->
+  <g class="char-breathe" id="pandinha-mascot">
+    
+    <!-- Outer Sticker Border / Halo (Identity matching Foquinha, Fox, Elephant) -->
+    <g id="sticker-halo" stroke="#383d4f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.65">
+      <!-- Outer Ear Left -->
+      <circle cx="395" cy="155" r="32"/>
+      <!-- Outer Ear Right -->
+      <circle cx="565" cy="155" r="32"/>
+      <!-- Outer Loaf Body Silhouette -->
+      <path d="M 360 365 
+               L 360 215 
+               C 360 135 415 130 480 130 
+               C 545 130 600 135 600 215 
+               L 600 365 
+               C 600 375 588 375 580 375 
+               L 380 375 
+               C 372 375 360 375 360 365 Z"/>
+    </g>
+
+    <!-- Ears Behind Body -->
+    <!-- Left Ear -->
+    <g class="ear-l">
+      <circle cx="395" cy="155" r="30" fill="url(#panda-dark)" stroke="#111218" stroke-width="7"/>
+      <circle cx="395" cy="155" r="16" fill="#36333c"/>
+    </g>
+    <!-- Right Ear -->
+    <g class="ear-r">
+      <circle cx="565" cy="155" r="30" fill="url(#panda-dark)" stroke="#111218" stroke-width="7"/>
+      <circle cx="565" cy="155" r="16" fill="#36333c"/>
+    </g>
+
+    <!-- Main Chubby Loaf Body -->
+    <path id="body-base"
+          d="M 365 360 
+             L 365 220 
+             C 365 140 415 135 480 135 
+             C 545 135 595 140 595 220 
+             L 595 360 
+             C 595 372 585 372 575 372 
+             L 385 372 
+             C 375 372 365 372 365 360 Z" 
+          fill="url(#panda-dark)" stroke="#111218" stroke-width="8" stroke-linejoin="round"/>
+
+    <!-- Panda Eye Patches (Signature Dark Gray/Brown Fur Mask on Sides) -->
+    <!-- Left Eye Mask Patch -->
+    <path d="M 366 215 C 366 160 410 160 445 190 C 475 215 470 280 435 285 C 390 290 366 265 366 215 Z" 
+          fill="url(#panda-dark)"/>
+    <!-- Right Eye Mask Patch -->
+    <path d="M 594 215 C 594 160 550 160 515 190 C 485 215 490 280 525 285 C 570 290 594 265 594 215 Z" 
+          fill="url(#panda-dark)"/>
+
+    <!-- Light Warm Cream Face & Belly Center (Panda inverted bib) -->
+    <path d="M 445 180 
+             Q 480 172 515 180 
+             C 535 220 540 310 525 365 
+             L 435 365 
+             C 420 310 425 220 445 180 Z" 
+          fill="url(#panda-cream)"/>
+
+    <!-- Dark Navy Formal Vest (Dapper waistcoat) -->
+    <path d="M 367 305 
+             L 415 315 
+             L 480 340 
+             L 545 315 
+             L 593 305 
+             L 594 365 
+             L 366 365 Z" 
+          fill="url(#panda-vest)" stroke="#111218" stroke-width="6" stroke-linejoin="round"/>
+    <!-- Lapel center slit of vest -->
+    <path d="M 480 340 L 480 365" stroke="#111218" stroke-width="4.5"/>
+
+    <!-- Soft Horizontal Oval Blush (Warm Pink) -->
+    <ellipse cx="405" cy="265" rx="20" ry="11" fill="url(#cheek-glow)"/>
+    <ellipse cx="555" cy="265" rx="20" ry="11" fill="url(#cheek-glow)"/>
+
+    <!-- BIG EXPRESSIVE ANIME EYES WITH TWO GLOSSY HIGHLIGHT DOTS -->
+    <!-- Left Eye -->
+    <g class="eye-blink" id="left-eye-group">
+      <circle cx="435" cy="235" r="23" fill="#ffffff" stroke="#111218" stroke-width="6"/>
+      <circle class="pupil-track" cx="436" cy="235" r="16" fill="#111218"/>
+      <!-- Primary Big Highlight Dot (Top-Left) -->
+      <circle class="pupil-track" cx="441" cy="229" r="6.5" fill="#ffffff"/>
+      <!-- Secondary Small Highlight Dot (Bottom-Right) -->
+      <circle class="pupil-track" cx="430" cy="242" r="3" fill="#ffffff"/>
+    </g>
+
+    <!-- Right Eye -->
+    <g class="eye-blink" id="right-eye-group">
+      <circle cx="525" cy="235" r="23" fill="#ffffff" stroke="#111218" stroke-width="6"/>
+      <circle class="pupil-track" cx="524" cy="235" r="16" fill="#111218"/>
+      <!-- Primary Big Highlight Dot (Top-Left) -->
+      <circle class="pupil-track" cx="529" cy="229" r="6.5" fill="#ffffff"/>
+      <!-- Secondary Small Highlight Dot (Bottom-Right) -->
+      <circle class="pupil-track" cx="518" cy="242" r="3" fill="#ffffff"/>
+    </g>
+
+    <!-- CUTE SNOUT & SWEET :3 KAWAII MOUTH -->
+    <g class="snout-twitch" id="kawaii-snout">
+      <!-- Dark Little Nose -->
+      <ellipse cx="480" cy="244" rx="6.5" ry="5" fill="#111218"/>
+      <circle cx="478.5" cy="242.5" r="1.5" fill="#ffffff"/>
+      <!-- Mouth line -->
+      <path d="M 480 248 L 480 254" stroke="#111218" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Rounded happy cat-smile :3 -->
+      <path d="M 467 253 Q 474 261 480 254 Q 486 261 493 253" 
+            fill="none" stroke="#111218" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- STUBBY CHIBI PAWS AT BASE (Resting flat) -->
+    <!-- Left Bottom Foot -->
+    <path d="M 415 372 C 415 358 430 358 445 358 C 455 358 460 366 460 374 Z" 
+          fill="#2b2832" stroke="#111218" stroke-width="5" stroke-linejoin="round"/>
+    <!-- Right Bottom Foot -->
+    <path d="M 500 374 C 500 366 505 358 515 358 C 530 358 545 358 545 372 Z" 
+          fill="#2b2832" stroke="#111218" stroke-width="5" stroke-linejoin="round"/>
+
+
+    <!-- ================= RHYTHMIC COMBING ARMS & AMBER COMB ================= -->
+    <g class="comb-motion" id="arms-and-comb">
+      
+      <!-- The Amber Wood Hair Comb (Held slanted across the chest) -->
+      <g transform="translate(430, 260) rotate(18)">
+        <!-- Comb Spine (Ergonomic Curved Amber Back) -->
+        <rect x="0" y="0" width="115" height="24" rx="8" fill="url(#comb-amber)" stroke="#111218" stroke-width="5"/>
+        <line x1="8" y1="6" x2="105" y2="6" stroke="#fef08a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+
+        <!-- Comb Teeth (Facing downwards/sideways catching the noodles) -->
+        <!-- 8 Precision Teeth -->
+        <g fill="url(#comb-amber)" stroke="#111218" stroke-width="3.5" stroke-linejoin="round">
+          <rect x="15" y="22" width="6.5" height="30" rx="3"/>
+          <rect x="27" y="22" width="6.5" height="32" rx="3"/>
+          <rect x="39" y="22" width="6.5" height="33" rx="3"/>
+          <rect x="51" y="22" width="6.5" height="33" rx="3"/>
+          <rect x="63" y="22" width="6.5" height="33" rx="3"/>
+          <rect x="75" y="22" width="6.5" height="32" rx="3"/>
+          <rect x="87" y="22" width="6.5" height="30" rx="3"/>
+          <rect x="99" y="22" width="6.5" height="26" rx="3"/>
+        </g>
+      </g>
+
+      <!-- Little Left Arm & Paw (Holding Left End of Comb) -->
+      <g id="left-arm">
+        <path d="M 395 295 Q 430 300 448 312 Q 440 326 420 320 Q 395 315 395 295 Z" 
+              fill="url(#panda-dark)" stroke="#111218" stroke-width="5" stroke-linejoin="round"/>
+        <!-- Rounded Chubby Paw hugging the comb -->
+        <circle cx="440" cy="312" r="14" fill="#3a3742" stroke="#111218" stroke-width="5"/>
+      </g>
+
+      <!-- Little Right Arm & Paw (Holding Center/Right of Comb) -->
+      <g id="right-arm">
+        <path d="M 565 295 Q 535 305 522 322 Q 532 334 550 325 Q 570 315 565 295 Z" 
+              fill="url(#panda-dark)" stroke="#111218" stroke-width="5" stroke-linejoin="round"/>
+        <!-- Rounded Chubby Paw hugging the comb -->
+        <circle cx="528" cy="320" r="14" fill="#3a3742" stroke="#111218" stroke-width="5"/>
+      </g>
+    </g>
+
+  </g>
+</svg>

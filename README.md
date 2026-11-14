@@ -14,16 +14,21 @@
 
 ---
 
-## 🪮 Conheça o "Pente Fino" (The Hardware Comb Mascot)
+## 🪮🐼 Conheça o "Pandinha Pente Fino" (The Hardware Comb Mascot)
 
-O **Pente Fino** é o mascote oficial do Hardware Arbiter. Inspirado na mesma linha artística e carisma da **Foquinha** (MJ Notch), da **Raposa Kitsune** e do **Elefante Phanty** (Ultimate Research):
+O **Pandinha Pente Fino** é o mascote oficial do Hardware Arbiter. Ele segue o mesmo DNA visual e carisma dos mascotes anteriores do ecossistema: a **Foquinha** (MJ Notch), a **Raposa Kitsune** (Kitsune Router) e o **Elefante Phanty** (Ultimate Research / DESLOP):
 
-- **O Pente passa desembaraçando o fluxo:** 
-  - **As mechas que vão com o pente (GPU):** Os nós pesados de computação (tensores, embeddings do ChromaDB, OCR de visão, Whisper ASR) são puxados pelos dentes do pente e descarregados na GPU (DirectML / CUDA / Vulkan).
-  - **As mechas que ficam na raiz (CPU):** As rotinas leves de sistema (I/O de arquivos, Git, terminal) permanecem assentadas na CPU, protegidas por **Thread Clamping** para o editor e o mouse nunca mais engasgarem.
+- **Anatomia & Animação Viva:**
+  - **Chibi Loaf Dapper:** O pandinha veste colete social azul-marinho, contorno sticker com halo protetor e patinhas repousadas.
+  - **Expressividade Real:** Respiração orgânica (`3.8s`), piscadas de olho periódicas com duplo brilho anime (`4.8s`), rastreamento de olhar por pupila, fungada de focinho kawaii e orelhas atentas.
+  - **Movimento Rítmico do Pente:** Seus bracinhos passam continuamente o pente de âmbar com 8 dentes de precisão (`2.2s ease-in-out`), desembaraçando o fluxo de tensores em tempo real.
+- **O Princípio Operacional do Pente:**
+  - **Macarrão Emaranhado à Esquerda (CPU Bottleneck):** Os nós caóticos e ondulantes de computação pesada (embeddings do ChromaDB, visão computacional, Whisper ASR) chegam fervendo em fios elétricos neon ciano.
+  - **Feixes de Laser Paralelos à Direita (GPU Offload):** Ao passarem pelos dentes do pente de âmbar, os nós se transformam em feixes de laser perfeitamente paralelos e contínuos, descarregados na GPU (DirectML / CUDA / Vulkan).
+  - **A Raiz Fica Limpa na CPU:** As rotinas leves de sistema (I/O, Git, terminal) permanecem assentadas na CPU, blindadas por **Thread Clamping (`OMP=2`, `UV=4`)** para o editor e o mouse nunca mais engasgarem.
 
 <p align="center">
-  <img src="mascot/pente_mascot.svg" alt="Mascote Pente Fino" width="380" />
+  <img src="mascot/pente_mascot.svg" alt="Pandinha Pente Fino Mascot — Combing chaotic noodles into silky GPU laser streams" width="560" />
 </p>
 
 ---
