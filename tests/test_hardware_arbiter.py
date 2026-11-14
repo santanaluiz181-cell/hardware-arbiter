@@ -138,6 +138,8 @@ class TestMascotSVGValidity(unittest.TestCase):
         # Check anatomy elements
         self.assertIn("pente-sticker-halo", content)
         self.assertIn("comb-and-paws-rig", content)
+        self.assertIn("left-hand-holding-rig", content)
+        self.assertIn("continuous-hair-stream", content)
 
 
 if __name__ == "__main__":

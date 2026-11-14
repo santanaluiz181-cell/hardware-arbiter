@@ -80,7 +80,7 @@
     <style>
       .char-breathe {
         animation: hbBreathe 4.2s ease-in-out infinite;
-        transform-origin: 512px 450px;
+        transform-origin: 512px 435px;
       }
       @keyframes hbBreathe {
         0%, 100% { transform: translateY(0px) scale(1); }
@@ -88,13 +88,21 @@
       }
       .comb-motion {
         animation: hbCombStroke 2.4s ease-in-out infinite;
-        transform-origin: 515px 365px;
+        transform-origin: 550px 355px;
       }
       @keyframes hbCombStroke {
-        0%, 100% { transform: translate(0px, 0px) rotate(-1.2deg); }
-        25% { transform: translate(4px, -2px) rotate(0.8deg); }
-        50% { transform: translate(9px, 1px) rotate(2.4deg); }
-        75% { transform: translate(3px, 2px) rotate(0deg); }
+        0%, 100% { transform: translate(0px, 0px) rotate(-1.5deg); }
+        25% { transform: translate(5px, -2px) rotate(0.8deg); }
+        50% { transform: translate(10px, 1px) rotate(2.5deg); }
+        75% { transform: translate(4px, 2px) rotate(0deg); }
+      }
+      .holding-hand {
+        animation: hbHoldSway 4.2s ease-in-out infinite;
+        transform-origin: 455px 365px;
+      }
+      @keyframes hbHoldSway {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-2px) rotate(1deg); }
       }
       .eye-blink {
         animation: hbBlink 4.6s ease-in-out infinite;
@@ -202,7 +210,7 @@
       Hardware Arbiter
     </text>
 
-    <!-- Subtitle (Clear, Human-Authored) -->
+    <!-- Subtitle -->
     <text x="0" y="98" class="sans-text" font-size="14.5" fill="#94a3b8" font-weight="400">
       O mascote <tspan fill="#f59e0b" font-weight="700">Pente</tspan> separa o fluxo de hardware:
     </text>
@@ -230,51 +238,51 @@
 
   <!-- Right Side: Backdrop Ambient Glow -->
   <circle cx="695" cy="165" r="145" fill="url(#hb-aura)"/>
-  <ellipse cx="695" cy="256" rx="105" ry="16" fill="url(#hb-floor-shadow)"/>
+  <ellipse cx="695" cy="254" rx="100" ry="15" fill="url(#hb-floor-shadow)"/>
 
   <!-- ================= MASCOT "PENTE" SCALED AT X=695, Y=165 ================= -->
-  <g transform="translate(695, 165) scale(0.58) translate(-512, -310)">
+  <g transform="translate(695, 165) scale(0.58) translate(-512, -305)">
 
-    <!-- Animal Mascot Base Rig -->
+    <!-- Animal Mascot Base Rig (Round Head + Feet) -->
     <g class="char-breathe">
 
       <!-- Sticker Halo Backing -->
-      <g stroke="#111218" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" fill="#111218">
+      <g stroke="#111218" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="#111218">
         <circle cx="410" cy="190" r="34"/>
         <circle cx="614" cy="190" r="34"/>
-        <path d="M 512 155 C 465 155, 410 180, 386 225 C 368 255, 360 285, 366 315 C 350 345, 345 385, 355 418 C 362 440, 415 448, 435 448 C 445 468, 485 468, 494 452 C 500 444, 524 444, 530 452 C 539 468, 579 468, 589 448 C 609 448, 662 440, 669 418 C 679 385, 674 345, 658 315 C 664 285, 656 255, 638 225 C 614 180, 559 155, 512 155 Z"/>
+        <path d="M 512 155 C 440 155, 360 215, 360 305 C 360 380, 375 425, 435 435 C 445 455, 485 455, 494 440 C 502 432, 522 432, 530 440 C 539 455, 579 455, 589 435 C 649 425, 664 380, 664 305 C 664 215, 584 155, 512 155 Z"/>
       </g>
       <!-- Sticker Outer Soft Rim -->
-      <g stroke="#44485c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.65">
+      <g stroke="#44485c" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.65">
         <circle cx="410" cy="190" r="34"/>
         <circle cx="614" cy="190" r="34"/>
-        <path d="M 512 155 C 465 155, 410 180, 386 225 C 368 255, 360 285, 366 315 C 350 345, 345 385, 355 418 C 362 440, 415 448, 435 448 C 445 468, 485 468, 494 452 C 500 444, 524 444, 530 452 C 539 468, 579 468, 589 448 C 609 448, 662 440, 669 418 C 679 385, 674 345, 658 315 C 664 285, 656 255, 638 225 C 614 180, 559 155, 512 155 Z"/>
+        <path d="M 512 155 C 440 155, 360 215, 360 305 C 360 380, 375 425, 435 435 C 445 455, 485 455, 494 440 C 502 432, 522 432, 530 440 C 539 455, 579 455, 589 435 C 649 425, 664 380, 664 305 C 664 215, 584 155, 512 155 Z"/>
       </g>
 
       <!-- Rounded Ears -->
       <g class="ear-l">
-        <circle cx="410" cy="190" r="32" fill="url(#hb-patch)" stroke="#111218" stroke-width="9"/>
+        <circle cx="410" cy="190" r="32" fill="url(#hb-patch)" stroke="#111218" stroke-width="8.5"/>
         <circle cx="410" cy="190" r="17" fill="#4d3e3d"/>
       </g>
       <g class="ear-r">
-        <circle cx="614" cy="190" r="32" fill="url(#hb-patch)" stroke="#111218" stroke-width="9"/>
+        <circle cx="614" cy="190" r="32" fill="url(#hb-patch)" stroke="#111218" stroke-width="8.5"/>
         <circle cx="614" cy="190" r="17" fill="#4d3e3d"/>
       </g>
 
-      <!-- Chubby Loaf Body Base -->
-      <path d="M 512 155 C 465 155, 410 180, 386 225 C 368 255, 360 285, 366 315 C 350 345, 345 385, 355 418 C 362 440, 415 448, 435 448 C 445 468, 485 468, 494 452 C 500 444, 524 444, 530 452 C 539 468, 579 468, 589 448 C 609 448, 662 440, 669 418 C 679 385, 674 345, 658 315 C 664 285, 656 255, 638 225 C 614 180, 559 155, 512 155 Z"
-            fill="url(#hb-body-fur)" stroke="#111218" stroke-width="9" stroke-linejoin="round"/>
+      <!-- Round Head Base (Zero separate trunk) -->
+      <path d="M 512 155 C 440 155, 360 215, 360 305 C 360 380, 375 425, 435 435 C 445 455, 485 455, 494 440 C 502 432, 522 432, 530 440 C 539 455, 579 455, 589 435 C 649 425, 664 380, 664 305 C 664 215, 584 155, 512 155 Z"
+            fill="url(#hb-body-fur)" stroke="#111218" stroke-width="8.5" stroke-linejoin="round"/>
 
       <!-- Taupe Eye Mask Patches -->
       <path d="M 386 225 C 368 255, 362 285, 366 315 C 375 330, 415 330, 455 315 C 485 295, 485 240, 455 210 C 430 185, 400 200, 386 225 Z" fill="url(#hb-patch)"/>
       <path d="M 638 225 C 656 255, 662 285, 658 315 C 649 330, 609 330, 569 315 C 539 295, 539 240, 569 210 C 594 185, 624 200, 638 225 Z" fill="url(#hb-patch)"/>
 
-      <!-- Cream Face & Belly Center -->
-      <path d="M 512 158 C 485 158, 465 180, 455 210 C 485 240, 485 295, 455 315 C 440 322, 420 335, 420 355 C 420 395, 435 440, 494 450 C 502 443, 522 443, 530 450 C 589 440, 604 395, 604 355 C 604 335, 584 322, 569 315 C 539 295, 539 240, 569 210 C 559 180, 539 158, 512 158 Z" fill="url(#hb-cream)"/>
+      <!-- Cream Face Center -->
+      <path d="M 512 172 C 485 172, 465 190, 455 215 C 485 240, 485 295, 455 315 C 440 322, 420 335, 420 355 C 420 395, 435 430, 494 435 C 502 428, 522 428, 530 435 C 589 430, 604 395, 604 355 C 604 335, 584 322, 569 315 C 539 295, 539 240, 569 210 C 559 180, 539 172, 512 172 Z" fill="url(#hb-cream)"/>
 
-      <!-- Navy Vest Flaps -->
-      <path d="M 366 325 C 350 355, 348 395, 358 420 C 365 435, 410 445, 435 445 L 460 380 C 435 365, 400 345, 366 325 Z" fill="url(#hb-vest)" stroke="#111218" stroke-width="7" stroke-linejoin="round"/>
-      <path d="M 658 325 C 674 355, 676 395, 666 420 C 659 435, 614 445, 589 445 L 564 380 C 589 365, 624 345, 658 325 Z" fill="url(#hb-vest)" stroke="#111218" stroke-width="7" stroke-linejoin="round"/>
+      <!-- Navy Vest on lower head sides -->
+      <path d="M 364 340 C 358 375, 365 410, 400 428 L 440 395 C 415 375, 385 355, 364 340 Z" fill="url(#hb-vest)" stroke="#111218" stroke-width="6.5" stroke-linejoin="round"/>
+      <path d="M 660 340 C 666 375, 659 410, 624 428 L 584 395 C 609 375, 639 355, 660 340 Z" fill="url(#hb-vest)" stroke="#111218" stroke-width="6.5" stroke-linejoin="round"/>
 
       <!-- Rosy Cheeks -->
       <ellipse cx="421.0" cy="312.2" rx="25" ry="16" fill="url(#hb-cheek)"/>
@@ -307,17 +315,42 @@
       </g>
 
       <!-- Feet -->
-      <path d="M 436 448 C 438 468, 480 472, 492 452" fill="#2d2524" stroke="#111218" stroke-width="7" stroke-linejoin="round"/>
-      <path d="M 532 452 C 544 472, 586 468, 588 448" fill="#2d2524" stroke="#111218" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M 438 435 C 440 455, 480 458, 492 440" fill="#2d2524" stroke="#111218" stroke-width="6.5" stroke-linejoin="round"/>
+      <path d="M 532 440 C 544 458, 584 455, 586 435" fill="#2d2524" stroke="#111218" stroke-width="6.5" stroke-linejoin="round"/>
     </g>
 
-    <!-- ================= FOREGROUND: COMB, PAWS & STRANDS IN FRONT ================= -->
-    <!-- Wavy Noodles Sweeping across Front of Body -->
-    <g filter="url(#hb-cyan-glow)" stroke="#00f2fe" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path class="noodle-1" stroke-width="4.5" d="M 120 280 C 235 250, 270 330, 320 285 C 365 250, 385 340, 420 375 C 440 395, 460 392, 485 390"/>
-      <path class="noodle-2" stroke-width="5" d="M 100 310 C 195 355, 235 300, 285 345 C 335 385, 375 335, 415 385 C 435 408, 460 400, 492 386"/>
-      <path class="noodle-3" stroke-width="4.2" d="M 140 335 C 215 300, 255 365, 310 345 C 350 330, 375 395, 425 398 C 450 400, 472 392, 498 382"/>
-      <path class="noodle-1" stroke-width="5" d="M 110 365 C 235 425, 275 350, 330 385 C 370 410, 400 380, 435 408 C 455 418, 478 402, 505 378"/>
+    <!-- ================= FOREGROUND: CONTINUOUS HAIR STREAM & ACTION OF COMBING ================= -->
+    <!-- Fully connected strands: Left (Chaotic) -> Left Hand (Holding) -> Comb (Combing) -> Right (Straight Lasers) -->
+    <g filter="url(#hb-cyan-glow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Strand 1 -->
+      <path class="noodle-1" stroke="#00f2fe" stroke-width="4.8"
+            d="M 120 275 C 240 260, 320 320, 390 345 C 420 355, 440 365, 455 368 C 485 352, 515 342, 545 333.5"/>
+      <line class="laser-stream laser-pulse" x1="545" y1="333.5" x2="980" y2="333.5" stroke="#00f2fe" stroke-width="5.5"/>
+
+      <!-- Strand 2 -->
+      <path class="noodle-2" stroke="#38bdf8" stroke-width="5"
+            d="M 100 305 C 250 335, 330 295, 400 360 C 430 368, 445 372, 458 375 C 490 360, 520 352, 552 345.5"/>
+      <line class="laser-stream laser-pulse" x1="552" y1="345.5" x2="980" y2="345.5" stroke="#38bdf8" stroke-width="5"/>
+
+      <!-- Strand 3 -->
+      <path class="noodle-3" stroke="#00f2fe" stroke-width="4.5"
+            d="M 140 330 C 230 365, 310 330, 390 370 C 425 375, 450 378, 462 380 C 495 368, 525 362, 558 356.0"/>
+      <line class="laser-stream laser-pulse" x1="558" y1="356.0" x2="980" y2="356.0" stroke="#00f2fe" stroke-width="5.5"/>
+
+      <!-- Strand 4 -->
+      <path class="noodle-1" stroke="#38bdf8" stroke-width="5.2"
+            d="M 110 360 C 240 340, 320 390, 400 380 C 430 382, 452 384, 465 385 C 500 376, 530 372, 562 367.5"/>
+      <line class="laser-stream laser-pulse" x1="562" y1="367.5" x2="980" y2="367.5" stroke="#38bdf8" stroke-width="5"/>
+
+      <!-- Strand 5 -->
+      <path class="noodle-2" stroke="#00f2fe" stroke-width="4"
+            d="M 130 395 C 260 410, 330 375, 410 395 C 435 392, 455 390, 468 392 C 505 385, 535 380, 568 376.5"/>
+      <line class="laser-stream laser-pulse" x1="568" y1="376.5" x2="980" y2="376.5" stroke="#00f2fe" stroke-width="5.5"/>
+
+      <!-- Strand 6 -->
+      <path class="noodle-3" stroke="#38bdf8" stroke-width="4.2"
+            d="M 150 435 C 270 435, 350 395, 420 405 C 440 400, 458 396, 470 398 C 510 394, 540 390, 574 386.5"/>
+      <line class="laser-stream laser-pulse" x1="574" y1="386.5" x2="980" y2="386.5" stroke="#38bdf8" stroke-width="5"/>
     </g>
 
     <!-- Floating Particles -->
@@ -328,41 +361,37 @@
       <circle cx="238" cy="275" r="3" fill="none" stroke="#00f2fe" stroke-width="1.5"/>
     </g>
 
-    <!-- Combing Comb & Paws Rig -->
-    <g class="comb-motion">
-      <!-- Amber Comb -->
-      <g transform="translate(515, 368) rotate(-28.4)">
-        <rect x="-70" y="-14" width="140" height="26" rx="9" fill="url(#hb-comb-amber)" stroke="#111218" stroke-width="6"/>
-        <line x1="-60" y1="-7" x2="60" y2="-7" stroke="url(#hb-comb-gold)" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
-        <g fill="url(#hb-comb-amber)" stroke="#111218" stroke-width="4.5" stroke-linejoin="round">
-          <rect x="-56" y="10" width="8" height="34" rx="4"/>
-          <rect x="-42" y="10" width="8" height="36" rx="4"/>
-          <rect x="-28" y="10" width="8" height="37" rx="4"/>
-          <rect x="-14" y="10" width="8" height="38" rx="4"/>
-          <rect x="0" y="10" width="8" height="38" rx="4"/>
-          <rect x="14" y="10" width="8" height="37" rx="4"/>
-          <rect x="28" y="10" width="8" height="36" rx="4"/>
-          <rect x="42" y="10" width="8" height="34" rx="4"/>
-        </g>
-      </g>
-      <!-- Left Paw -->
-      <path d="M 395 340 Q 425 350 445 362 Q 435 378 410 370 Z" fill="url(#hb-patch)" stroke="#111218" stroke-width="6"/>
-      <circle cx="455" cy="365" r="21" fill="url(#hb-patch)" stroke="#111218" stroke-width="7"/>
-      <circle cx="452" cy="362" r="14" fill="#8c7a78"/>
-      <!-- Right Paw -->
-      <path d="M 640 350 Q 610 365 590 375 Q 600 392 625 380 Z" fill="url(#hb-patch)" stroke="#111218" stroke-width="6"/>
-      <circle cx="582" cy="378" r="21" fill="url(#hb-patch)" stroke="#111218" stroke-width="7"/>
-      <circle cx="585" cy="375" r="14" fill="#8c7a78"/>
+    <!-- Left Hand: Clasping and Holding the Hair Bundle in place -->
+    <g class="holding-hand" id="hb-left-hand">
+      <path d="M 395 345 Q 425 352 445 362 Q 435 378 405 372 Z" fill="url(#hb-patch)" stroke="#111218" stroke-width="6"/>
+      <circle cx="452" cy="365" r="20" fill="url(#hb-patch)" stroke="#111218" stroke-width="7"/>
+      <circle cx="450" cy="363" r="13" fill="#8c7a78"/>
+      <path d="M 445 355 Q 452 358 458 355" fill="none" stroke="#111218" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 444 372 Q 452 375 458 372" fill="none" stroke="#111218" stroke-width="2.5" stroke-linecap="round"/>
     </g>
 
-    <!-- Silky Lasers Emerging to Right Edge -->
-    <g filter="url(#hb-cyan-glow)">
-      <line class="laser-stream laser-pulse" x1="575" y1="333.5" x2="980" y2="333.5" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
-      <line class="laser-stream laser-pulse" x1="580" y1="345.5" x2="980" y2="345.5" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
-      <line class="laser-stream laser-pulse" x1="585" y1="356.0" x2="980" y2="356.0" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
-      <line class="laser-stream laser-pulse" x1="588" y1="367.5" x2="980" y2="367.5" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
-      <line class="laser-stream laser-pulse" x1="582" y1="376.5" x2="980" y2="376.5" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round"/>
-      <line class="laser-stream laser-pulse" x1="572" y1="386.5" x2="980" y2="386.5" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+    <!-- Right Hand & Amber Comb: Combing motion -->
+    <g class="comb-motion" id="hb-comb-rig">
+      <g transform="translate(520, 362) rotate(-28.4)">
+        <rect x="-68" y="-13" width="136" height="25" rx="8" fill="url(#hb-comb-amber)" stroke="#111218" stroke-width="5.5"/>
+        <line x1="-58" y1="-6" x2="58" y2="-6" stroke="url(#hb-comb-gold)" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+        <g fill="url(#hb-comb-amber)" stroke="#111218" stroke-width="4.2" stroke-linejoin="round">
+          <rect x="-54" y="10" width="7.5" height="32" rx="3.5"/>
+          <rect x="-40" y="10" width="7.5" height="34" rx="3.5"/>
+          <rect x="-26" y="10" width="7.5" height="35" rx="3.5"/>
+          <rect x="-12" y="10" width="7.5" height="36" rx="3.5"/>
+          <rect x="2" y="10" width="7.5" height="36" rx="3.5"/>
+          <rect x="16" y="10" width="7.5" height="35" rx="3.5"/>
+          <rect x="30" y="10" width="7.5" height="34" rx="3.5"/>
+          <rect x="44" y="10" width="7.5" height="32" rx="3.5"/>
+        </g>
+      </g>
+      <path d="M 640 348 Q 612 362 590 374 Q 600 390 625 378 Z" fill="url(#hb-patch)" stroke="#111218" stroke-width="6"/>
+      <circle cx="582" cy="378" r="20" fill="url(#hb-patch)" stroke="#111218" stroke-width="7"/>
+      <circle cx="584" cy="375" r="13" fill="#8c7a78"/>
+      <path d="M 575 368 Q 582 371 588 368" fill="none" stroke="#111218" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 576 385 Q 583 388 589 385" fill="none" stroke="#111218" stroke-width="2.5" stroke-linecap="round"/>
     </g>
+
   </g>
 </svg>
